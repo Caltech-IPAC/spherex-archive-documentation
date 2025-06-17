@@ -1,8 +1,3 @@
-# SPHEREx Archive at IRSA User Guide
-Last updated 13 June 2025
-
-[toc]
-
 ## Introduction
 
 ### Document Purpose and Scope
