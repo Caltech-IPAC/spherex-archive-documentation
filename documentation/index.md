@@ -54,10 +54,9 @@ The main Quick Release data product is the Spectral Multi-Extension FITS file (M
 
 ## SPHEREx Data Access
 
-IRSA serves SPHEREx data both on premises at IPAC and in the cloud via Amazon Web Services (AWS). IRSA provides layered access to these data to support a variety of use cases and users. These layers include:
+IRSA serves SPHEREx data from on premises at IPAC. IRSA provides layered access to these data to support a variety of use cases and users. These layers include:
 
 * **Browsable Directories:** SPHEREx on-premises data products are laid out in directories that can be navigated with standard web browsers.
-* **Cloud Access:** SPHEREx data are available in Amazon Web Services (AWS) Open Data Repository (ODR).
 * **Application Program Interfaces:** IRSA provides SPHEREx data access APIs that are compliant with International Virtual Observatory Alliance (IVOA) standards.
 * **Python Packages:** SPHEREx data at IRSA are accessible via the Python packages pyvo and astroquery
 * **SPHEREx Data Explorer:** IRSA provides a web-based Graphical User Interface (GUI) that makes it easy to search for, visualize, and download SPHEREx data.
@@ -175,65 +174,3 @@ The tool includes its own context-sensitive help, but we summarize the main func
 
 * LVF Search
 * Spectrophotometry Tool
-
-### Cloud Access
-
-SPHEREx data are available in Amazon Web Services (AWS) Open Data Repository (ODR). Downloads from AWS can be made without logging in and without incurring any egress costs. Information on how to access these data are available at IRSA’s Cloud Data Access webpage:
-
- https://irsa.ipac.caltech.edu/cloud_access/
-
-### Bulk Downloads
-
-Users interested in downloading large data volumes should plan for long download times and substantial local storage. IRSA has staged SPHEREx data both on premises at IPAC and in the cloud using AWS. IRSA’s synchronous data services, including the SIA and TAP APIs and the SPHEREx Data Explorer, rely on the on-premises copy of the SPHEREx data. To avoid interfering with the use of these synchronous services, we recommend that users download large amounts of data from the AWS copy.
-
-
-The minimum information you need to download data from AWS are:
-
-* bucket name
-* prefix
-
-For SPHEREx, bucket name = nasa-irsa-spherex-qr
-
-Each subdirectory has a different prefix:
-
-qr/level2
-
-Once you have identified the bucket name and prefix of the directory or file you wish to download, you can use the AWS Command Line Interface (CLI):
-
-https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-
-* **Example 1:** List the files in a directory
-```
-aws s3 ls --no-sign-request s3://nasa-irsa-spherex-q3/q3/level2/
-```
-    
-* **Example 2:** Synchronize the contents of a bucket with a directory on your own machine, but just as a dry run, to see what would happen
-```
-aws s3 sync --no-sign-request --dryrun s3://nasa-irsa-spherex-
-qr/qr/level2/ .
-```
-
-* **Example 3:** synchronize the contents of a bucket with a directory on your own 
-```
-aws s3 sync --no-sign-request s3://nasa-irsa-spherex-qr/qr/level2/ .
-```
-
-* **Example 4:** Copy a single file from a bucket to your own machine
-```
-aws s3 cp --no-sign-request s3://nasa-irsa-spherex-qr/qr/level2/CAW.fits .
-```
-
-* **Example 5:** Alter download script from SPHEREx Data Explorer to pull data from cloud instead of from on-prem at IPAC
-```
-curl "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr/level2/caw.fits" -o caw.fits
-```
-turns into:
-```
-aws s3 cp --no-sign-request --dryrun s3://nasa-irsa-spherex-qr/qr/level2/caw.fits .
-```
-
-
-
-
-
-
