@@ -2,11 +2,11 @@
 
 A detailed description of SPHEREx data products available to the public is provided in Section 2 ("The SPHEREx Data Products") of the SPHEREx Explanatory Supplement. Here we provide a concise summary.
 
-### Spectral Multi-Extension FITS (MEF)
+### Spectral Multi-Extension FITS Files (MEF)
 
-The main Quick Release data product is the Spectral Multi-Extension FITS file (MEF). Each Spectral MEF contains 6 extensions:
+The main Quick Release data product is the Spectral MEF. The Level 2 pipeline produces 6 Spectral MEFs (one for each band) for each sky pointing. Each Spectral MEF is approximately 70 MB and contains 6 extensions:
 
-1. **IMAGE** - Calibrated surface brightness flux density in units of MJy/sr, stored as a 2040 x 2040 image.
+1. **IMAGE** - Calibrated surface brightness flux density in units of MJy/sr, stored as a 2040 x 2040 image. No zodiacal light subtraction is applied.
 
 2. **FLAG** - Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image. The definition of the flags are provided in Table 8 of the SPHEREx Explanatory Supplement.
 
