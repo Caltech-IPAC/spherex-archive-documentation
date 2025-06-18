@@ -1,9 +1,8 @@
 ## SPHEREx Data Access
 
-IRSA serves SPHEREx data both on premises at IPAC and in the cloud via Amazon Web Services (AWS). IRSA provides layered access to these data to support a variety of use cases and users. These layers include:
+IRSA serves SPHEREx data on premises at IPAC. IRSA provides layered access to these data to support a variety of use cases and users. These layers include:
 
 * **Browsable Directories:** SPHEREx on-premises data products are laid out in directories that can be navigated with standard web browsers.
-* **Cloud Access:** SPHEREx data are available in Amazon Web Services (AWS) Open Data Repository (ODR).
 * **Application Program Interfaces:** IRSA provides SPHEREx data access APIs that are compliant with International Virtual Observatory Alliance (IVOA) standards.
 * **Python Packages:** SPHEREx data at IRSA are accessible via the Python packages pyvo and astroquery
 * **SPHEREx Data Explorer:** IRSA provides a web-based Graphical User Interface (GUI) that makes it easy to search for, visualize, and download SPHEREx data.
