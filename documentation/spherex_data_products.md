@@ -21,13 +21,15 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 
 *Filename Format:*
 `
-- level1_[Observation ID]_D[Detector Number]_spx_l2b_v[Version]4_[Processing Date]`
+- 'level1_[Observation ID]_D[Detector Number]_spx_l2b_v[Version]_[Processing Date]`
 
 *Where:* 
 
 - `Observation ID` includes the survey planning period and the large and small slew counters
 
 - `Detector Number` is an integer from 1 through 6
+
+- 'Version' is the version of this file
 
 - `Processing Date` includes the year and the number of days into the year
 
