@@ -19,18 +19,20 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 6. **WCS-WAVE** - Spectral World Coordinate System (WCS) lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths. The lookup table consists of 1 row with 3 columns (X, Y, VALUES). X and Y are each arrays of length 7, defining a 7x7 grid of control points in spectral image pixel space. VALUES is a 7x7 array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth. To determine the central wavelength or bandwidth at an arbitrary pixel location, identify the four nearest control points and apply bilinear interpolation. This method yields values accurate to within approximately 1 nm.
 
 
-Filename Format:
+*Filename Format:*
 `level1_[Observation ID]_D[Detector Number]_spx_l2b_v[Version]4_[Processing Date]`
 
-where 
+*Where:* 
 
-`Observation ID` includes the survey planning period and the large and small slew counters
+- `Observation ID` includes the survey planning period and the large and small slew counters
 
-`Detector Number` is an integer from 1 through 6
+- `Detector Number` is an integer from 1 through 6
 
-`Processing Date` includes the year and the number of days into the year
+- `Processing Date` includes the year and the number of days into the year
 
-An example is 'level2_2025W18_2B_0001_1D1_spx_l2b-v12-2025-164.fits'
+*Example:*
+
+- 'level2_2025W18_2B_0001_1D1_spx_l2b-v12-2025-164.fits'
 
 
 ### Calibration Product: Absolute Gain Matrix
