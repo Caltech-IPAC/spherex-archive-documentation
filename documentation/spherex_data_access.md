@@ -65,11 +65,4 @@ Examples of data queries using both of these libraries can be found in [IRSA’s
 
 ### SPHEREx Data Explorer Web Application
 
-Users who prefer an interactive graphical user interface (GUI) for specifying search constraints, submitting queries, and visualizing the results should consider the SPHEREx Data Explorer:
-
-https://irsa.ipac.caltech.edu/applications/spherex
-
-The tool includes its own context-sensitive help, but we summarize the main functionality below.
-
-* LVF Search
-* Spectrophotometry Tool
+Users who prefer an interactive graphical user interface (GUI) for specifying search constraints, submitting queries, and visualizing the results should consider the [SPHEREx Data Explorer](https://irsa.ipac.caltech.edu/applications/spherex), which includes its own context-sensitive help.
