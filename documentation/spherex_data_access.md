@@ -58,12 +58,10 @@ See the next section to learn how to use Python wrappers around IRSA’s SIA2 se
 
 If you would like to take advantage of IRSA’s SIA2 service for querying SPHEREx images, but prefer to use Python rather than the command line, you may be interested in using one of two Python libraries:
 
-*	PyVO  -- PyVO lets you find and retrieve astronomical data available from archives that support standard IVOA protocols.
-*	Astroquery  -- This module provides access to the public astrophysics catalogs, images, and spectra curated by the NASA/IPAC Infrared Science Archive (IRSA) at Caltech. IRSA hosts data from many missions, including SPHEREx, Euclid, Spitzer, WISE/NEOWISE, SOFIA, IRTF, 2MASS, Herschel, IRAS, and ZTF.
+*	**PyVO**  -- This module lets you find and retrieve astronomical data available from archives that support standard IVOA protocols.
+*	**Astroquery**  -- This module provides access to IRSA's public astrophysics data from projects such as SPHEREx, Euclid, Spitzer, WISE/NEOWISE, SOFIA, IRTF, 2MASS, Herschel, IRAS, and ZTF.
 
-Examples of data queries using both of these libraries can be found in IRSA’s Python Notebook Tutorial Repository:
-
-https://caltech-ipac.github.io/irsa-tutorials/
+Examples of data queries using both of these libraries can be found in [IRSA’s Python Notebook Tutorial Repository](https://caltech-ipac.github.io/irsa-tutorials/):
 
 ### SPHEREx Data Explorer Web Application
 
