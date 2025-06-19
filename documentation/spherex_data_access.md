@@ -55,19 +55,6 @@ The content of each subdirectory is described in greater detail in the subsectio
 * Band 5: λ= 3.83 - 4.41 µm; R=110
 * Band 6: λ= 4.42 - 5.00 µm; R=130
 
-Within each detector directory are the spectral image MEFs, which adhere to the following filename convention:
-
-`level1_[Observation ID]_D[Detector Number]_spx_l2b_v4_[Processing Date]`
-
-where 
-
-`Observation ID` includes the survey planning period and the large and small slew counters
-
-`Detector Number` is an integer from 1 through 6
-
-`Processing Date` includes the year and the number of days into the year
-
-An example is `level2_2025W22_2B_0001_1D3_spx_l2b-v4-2025-152.fits`
 
 ### Application Program Interfaces (APIs)
 
