@@ -2,13 +2,16 @@
 
 A detailed description of SPHEREx data products available to the public is provided in the SPHEREx Explanatory Supplement. Here we provide a concise summary of the science, calibration, and additional data products available at IRSA. This summary includes filenaming conventions, for which we adopt the following definitions:
 
-- `Observation ID` includes the survey planning period and the large and small slew counters
+- `Planning Period` is a designation by the SPHEREx project of the survey plan uploaded to the spacecraft, e.g. `2025W18_2B`
+
+- `Observation ID` includes the survey planning period and the large and small slew counters, e.g. `2025W18_2B_0001_1`
 
 - `Detector` is an integer from 1 through 6
 
-- `Version` is the version of this file
+- `Version` is the version of this file, e.g. '12'
 
-- `Processing Date` includes the year and the number of days into the year
+- `Processing Date` includes the year and the number of days into the year, e.g. `2025-164`
+
 
 ### Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
 
