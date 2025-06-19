@@ -50,9 +50,7 @@ Users must add a `COLLECTION` parameter to this endpoint to specify which datase
 
 You can use `wget` or `curl` to submit SIA2 queries from the command line. For example:
 
-* `wget -O example1.csv "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex&POS=circle+164.7+-5.8+0.01&RESPONSEFORMAT=CSV"`
-
-* `curl --output example2.csv "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex&POS=circle+164.7+-5.8+0.01&RESPONSEFORMAT=CSV"`
+* `wget -O example1.html "https://irsatest.ipac.caltech.edu/SIA?COLLECTION=spherex_qr&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
 
 See the next section to learn how to use Python wrappers around IRSA’s SIA2 service.
 
