@@ -20,7 +20,7 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 
 
 *Filename Format:*
-`
+
 - `level1_[Observation ID]_D[Detector Number]_spx_l2b_v[Version]_[Processing Date]`
 
 *Where:* 
