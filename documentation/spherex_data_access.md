@@ -30,29 +30,6 @@ The public data products are organized into subdirectories based on the followin
 The content of each subdirectory is described in greater detail in the Data Products section of this user guide and in the SPHEREx Explanatory Supplement.
 
 
-
-* `planning_period` is a designation by the SPHEREx project of the survey plan uploaded to the spacecraft, generally twice a week.  An example is `2025W22_1B`
-
-#### calib_type
-
-* What calibration files are in here?
-
-#### run_collection
-
-* `run_collection` is an SPHEREx Science Data Center (SSDC) tag to track the data processing.
-
-#### detector
-
-* The SPHEREx focal plane is split with a dichroic to three short-wavelength and three long-wavelength detector arrays. Two focal plane assemblies (FPAs) simultaneously image the sky through a dichroic beam splitter. Each FPA contains three 2K x 2K detector arrays placed behind a set of linear variable filters (LVFs), providing narrow-band response with a band center that varies along one axis of the array. SPHEREx obtains spectra through multiple exposures, placing a given source at multiple positions in the field of view, where it is measured at multiple wavelengths by repointing the spacecraft.
-
-* Band 1: λ= 0.75 - 1.09 µm; R=41
-* Band 2: λ= 1.10 - 1.62 µm; R=41
-* Band 3: λ= 1.63 - 2.41 µm; R=41
-* Band 4: λ= 2.42 - 3.82 µm; R=35
-* Band 5: λ= 3.83 - 4.41 µm; R=110
-* Band 6: λ= 4.42 - 5.00 µm; R=130
-
-
 ### Application Program Interfaces (APIs)
 
 IRSA provides API access to SPHEREx LVF images through version 2 of the VO Simple Image Access (SIA2) protocol. SIA2 allows users to query for a list of images that satisfy constraints based on position(s) on the sky, band, time, ID, and instrument. The list returned by the service includes data access URLs, which can be used to retrieve some or all of the images in the list using wget or curl. A brief summary of SIA2 for accessing SPHEREx data for IRSA is given below. Additional documentation on IRSA’s SIA2 service can be found on the IRSA website:
