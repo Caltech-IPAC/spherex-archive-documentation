@@ -18,39 +18,39 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 
 6. **WCS-WAVE** - Spectral World Coordinate System (WCS) lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths. The lookup table consists of 1 row with 3 columns (X, Y, VALUES). X and Y are each arrays of length 7, defining a 7x7 grid of control points in spectral image pixel space. VALUES is a 7x7 array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth. To determine the central wavelength or bandwidth at an arbitrary pixel location, identify the four nearest control points and apply bilinear interpolation. This method yields values accurate to within approximately 1 nm.
 
-## Calibration Product: Absolute Gain Matrix
+### Calibration Product: Absolute Gain Matrix
 
 The Absolute Gain Matrix is a calibration data product that provides the absolute gain for each pixel in units of (MJy/sr) / (e−/s). There is one absolute gain matrix per detector. Each matrix is distributed as a ~16 MB FITS image file with dimensions of 2040 × 2040 pixels.
 
-## Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
+### Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
 
 The Exposure-Averaged Point Spread Functions (PSFs) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121. Each of the 121 layers represents a "super-resolution" PSF estimate in a different region (defined by an 11x11 grid) of the detector. Each PSF is a two-dimensional array with size of 101 × 101 pixels. The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent as one spectral image pixel (0.615 arcsec).
 
-## Calibration Product: Dark Current
+### Calibration Product: Dark Current
 
 The Dark Current products are ~16 MB FITS image files (one per detector) with dimensions 2,040 x 2,040 and units of electron/s.
 
-## Calibration Product: Dichroic
+### Calibration Product: Dichroic
 
 The Dichroic products are ~16 MB FITS image files with dimensions 2,040 x 2,040. The pixel value is 0 for pixels that are unaffected by flux attenuation due to the dicroic filter and 1 for impacted pixels. A pixel is considered impacted if the flux attenuation is 50% or higher. Note that only bands 3 and 4 have any non-zero values.
 
-## Calibration Product: Electronic Gain Factors
+### Calibration Product: Electronic Gain Factors
 
 The Electronic Gain Factor product is a single YAML file that includes the provenance information for the detectors and a list of 32 gain values per detector.
 
-## Additional Products: Nonfunctional Pixels
+### Additional Product: Nonfunctional Pixels
 
 The Nonfunctional Pixel products are ~32 MB FITS image files (one per detector) with dimensions 2,040 x 2,040. Pixel values are 1 for pixels known to be permanently non-functioning and 0 otherwise.
 
-## Additional Products: Nonlinearity Parameters
+### Additional Product: Nonlinearity Parameters
 
 The Nonlinearity Parameter products are ~79 MB multi-extension FITS files (one per detector). Each file contains 5 extensions (Q_nl, b1, b2, b3, Qmax), each of which is an image with dimensions 2,040 x 2,040. These extensions are described in Section 3.2.1 of the SPHEREx Explanatory Supplement.
 
-## Additional Products: Read Noise Parameters
+### Additional Product: Read Noise Parameters
 
 The Read Noise Parameters products are ~48 MB multi-extension FITS files (one per detector). Each file has 2 extensions: READNOISE-1 and READNOISE-2. Each extension is an image with dimensions 2040 × 2040. These extensions provide the electronic noise in units of electrons.
 
-## Additional Products: Spectral WCS
+### Additional Product: Spectral WCS
 
 The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector). Each file has 2 extensions: CWAVE, CBAND, and WCS-WAVE. 
 
