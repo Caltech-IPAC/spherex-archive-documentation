@@ -20,11 +20,18 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 
 
 Filename Format:
-level2_[ObSID]D[Detector]_spx_l2b-v12-2025-164.fits
+`level1_[Observation ID]_D[Detector Number]_spx_l2b_v[Version]4_[Processing Date]`
 
-  Where 
-  "OBSID" is the Observation ID, e.g. 2025W18_2B_0001_1
-  "Detector" is one of the SPHEREx detectors: 1, 2, 3, 4, 5, or 6
+where 
+
+`Observation ID` includes the survey planning period and the large and small slew counters
+
+`Detector Number` is an integer from 1 through 6
+
+`Processing Date` includes the year and the number of days into the year
+
+An example is 'level2_2025W18_2B_0001_1D1_spx_l2b-v12-2025-164.fits'
+
 
 ### Calibration Product: Absolute Gain Matrix
 
