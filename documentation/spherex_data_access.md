@@ -12,27 +12,24 @@ Each of these data access layers is described in greater detail in the subsectio
 ### Browsable Directories
 SPHEREx data products are laid out in directories that can be navigated with standard web browsers. This is convenient for users to get a quick sense of the types of data products that are available, to quickly download some examples by clicking through the directory tree, and to script bulk downloads using wget or curl.
 
-The root of the SPHEREx data directories is:
-https://irsa.ipac.caltech.edu/ibe/data/spherex
+The root of the SPHEREx data quick release data directories is:
+https://irsa.ipac.caltech.edu/ibe/data/spherex/qr
 
-The data are organized into subdirectories based on the following organizational scheme
-* qr (quick release)
-    * level2
-        * planning_period
-            * detector (1-6)
-                * FITS files
-    * calib_type
-        * run_collection
-            * detector (1-6)
-                * FITS files
+The public data products are organized into subdirectories based on the following organizational scheme:
+* `abs_gain_matrix/cal-agm-v[Version]-[Processing Date]/[Detector]/`
+* `average_psf/cal-psf-v[Version]-[Processing Date]/[Detector]/`
+* `dark/cal-drk-v[Version]-[Processing Date]/[Detector]/`
+* `dichroic/base-[Processing Date]/[Detector]/`
+* `gain_factors/base-[Processing Date]/`
+* `level2/[Planning Period]/l2b-v[Version]-[Processing Date]/[Detector]/`
+* `nonfunc/base-[Processing Date]/[Detector]/`
+* `nonlinear_pars/base-[Processing Date]/[Detector]/`
+* `readnoise_pars/base-[Processing Date]/[Detector]/`
+* `spectral_wcs/base-[Processing Date]/[Detector]/`
 
-The content of each subdirectory is described in greater detail in the subsections below.
+The content of each subdirectory is described in greater detail in the Data Products section of this user guide and in the SPHEREx Explanatory Supplement.
 
-#### level2
 
-* The `level2` subdirectory contains calibrated spectral images, also known as linear variable filter (LVF) images. These images are photometrically and astrometrically calibrated and are ready for science analysis, including photometric measurements. They are made available to the public within two months of acquisition.
-
-#### planning_period
 
 * `planning_period` is a designation by the SPHEREx project of the survey plan uploaded to the spacecraft, generally twice a week.  An example is `2025W22_1B`
 
