@@ -18,6 +18,14 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 
 6. **WCS-WAVE** - Spectral World Coordinate System (WCS) lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths. The lookup table consists of 1 row with 3 columns (X, Y, VALUES). X and Y are each arrays of length 7, defining a 7x7 grid of control points in spectral image pixel space. VALUES is a 7x7 array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth. To determine the central wavelength or bandwidth at an arbitrary pixel location, identify the four nearest control points and apply bilinear interpolation. This method yields values accurate to within approximately 1 nm.
 
+
+Filename Format:
+level2_[ObSID]D[Detector]_spx_l2b-v12-2025-164.fits
+
+  Where 
+  "OBSID" is the Observation ID, e.g. 2025W18_2B_0001_1
+  "Detector" is one of the SPHEREx detectors: 1, 2, 3, 4, 5, or 6
+
 ### Calibration Product: Absolute Gain Matrix
 
 The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector) with dimensions 2,040 × 2,040 and units of (MJy/sr) / (e−/s).
@@ -25,12 +33,12 @@ The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector)
 Filename Format:
 abs_gain_matrix_D[Detector]_spx_cal-agm-v4-2025-161.fits
 
-Where:
-- "Detector" is one of the SPHEREx detectors: 1, 2, 3, 4, 5, or 6
+  Where "Detector" is one of the SPHEREx detectors: 1, 2, 3, 4, 5, or 6
 
 ### Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
 
 The Exposure-Averaged Point Spread Functions (PSFs) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121. Each of the 121 layers represents a "super-resolution" PSF estimate in a different region (defined by an 11x11 grid) of the detector. Each PSF is a two-dimensional array with size of 101 × 101 pixels. The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent as one spectral image pixel (0.615 arcsec).
+
 
 ### Calibration Product: Dark Current
 
