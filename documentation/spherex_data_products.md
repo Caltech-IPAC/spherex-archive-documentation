@@ -29,7 +29,7 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 
 - `Detector Number` is an integer from 1 through 6
 
-- 'Version' is the version of this file
+- `Version` is the version of this file
 
 - `Processing Date` includes the year and the number of days into the year
 
