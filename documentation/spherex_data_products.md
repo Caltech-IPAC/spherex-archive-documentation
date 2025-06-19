@@ -22,6 +22,12 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 
 The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector) with dimensions 2,040 × 2,040 and units of (MJy/sr) / (e−/s).
 
+Filename Format:
+abs_gain_matrix_D[Detector]_spx_cal-agm-v4-2025-161.fits
+
+Where:
+- "Detector" is one of the SPHEREx detectors: 1, 2, 3, 4, 5, or 6
+
 ### Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
 
 The Exposure-Averaged Point Spread Functions (PSFs) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121. Each of the 121 layers represents a "super-resolution" PSF estimate in a different region (defined by an 11x11 grid) of the detector. Each PSF is a two-dimensional array with size of 101 × 101 pixels. The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent as one spectral image pixel (0.615 arcsec).
