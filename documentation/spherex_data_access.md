@@ -38,19 +38,19 @@ IRSA's generric SIA2 endpoint is:
 
 `https://irsa.ipac.caltech.edu/SIA?`
 
-Users must add a COLLECTION parameter to this endpoint to specify which dataset to search.  There are three SPHEREx-related SIA2 COLLECTIONS:
+Users must add a `COLLECTION` parameter to this endpoint to specify which dataset to search.  There are three SPHEREx-related SIA2 collections:
 
-* SPHEREx Quick Release spectral image MEFs that are part of the SPHEREx Wide Survey can be accessed with: `COLLECTION=spherex_qr`
+* SPHEREx Quick Release Spectral Image MEFs that are part of the SPHEREx **Wide Survey** can be accessed with: `COLLECTION=spherex_qr`
 
-* SPHEREx Quick Release spectral image MEFs that are part of the SPHEREx Deep Survey can be accessed with: `COLLECTION=spherex_qr_deep`
+* SPHEREx Quick Release Spectral Image MEFs that are part of the SPHEREx **Deep Survey** can be accessed with: `COLLECTION=spherex_qr_deep`
   
-* SPHEREx Quick Release Calibration files can be accessed with: `COLLECTION=spherex_qr_cal`
+* SPHEREx Quick Release **Calibration files** can be accessed with: `COLLECTION=spherex_qr_cal`
 
 You can use `wget` or `curl` to submit SIA2 queries from the command line. For example:
 
-* wget -O example1.csv "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex&POS=circle+164.7+-5.8+0.01&RESPONSEFORMAT=CSV"
+* `wget -O example1.csv "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex&POS=circle+164.7+-5.8+0.01&RESPONSEFORMAT=CSV"`
 
-* curl --output example2.csv "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex&POS=circle+164.7+-5.8+0.01&RESPONSEFORMAT=CSV"
+* `curl --output example2.csv "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex&POS=circle+164.7+-5.8+0.01&RESPONSEFORMAT=CSV"`
 
 See the next section to learn how to use Python wrappers around IRSA’s SIA2 service.
 
