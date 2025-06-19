@@ -34,6 +34,8 @@ The content of each subdirectory is described in greater detail in the Data Prod
 
 IRSA provides API access to SPHEREx Spectral Images through version 2 of the VO Simple Image Access (SIA2) protocol. SIA2 allows users to query for a list of images that satisfy constraints based on position(s) on the sky, band, time, ID, and instrument. The list returned by the service includes data access URLs, which can be used to retrieve some or all of the images in the list using wget or curl. A brief summary of SIA2 for accessing SPHEREx data for IRSA is given below. Additional [documentation on IRSA’s SIA2 service](https://irsa.ipac.caltech.edu/ibe/sia.html) can be found on the IRSA website:
 
+Note: SPHEREx data are ingested on a weekly basis. Due to the nature of the ingestion process, new SPHEREx data will first be available in the browsable directories and in the SPHEREx Data Explorer GUI. Availability via SIA2 and Python libraries like Astroquery and PyVO will lag on the order of a day.
+
 IRSA's generric SIA2 endpoint is:
 
 `https://irsa.ipac.caltech.edu/SIA?`
