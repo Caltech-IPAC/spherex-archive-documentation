@@ -20,7 +20,7 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 
 ### Calibration Product: Absolute Gain Matrix
 
-The Absolute Gain Matrix is a calibration data product that provides the absolute gain for each pixel in units of (MJy/sr) / (e−/s). There is one absolute gain matrix per detector. Each matrix is distributed as a ~16 MB FITS image file with dimensions of 2040 × 2040 pixels.
+The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector) with dimensions 2,040 × 2,040 and units of (MJy/sr) / (e−/s).
 
 ### Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
 
@@ -48,14 +48,14 @@ The Nonlinearity Parameter products are ~79 MB multi-extension FITS files (one p
 
 ### Additional Product: Read Noise Parameters
 
-The Read Noise Parameters products are ~48 MB multi-extension FITS files (one per detector). Each file has 2 extensions: READNOISE-1 and READNOISE-2. Each extension is an image with dimensions 2040 × 2040. These extensions provide the electronic noise in units of electrons.
+The Read Noise Parameters products are ~48 MB multi-extension FITS files (one per detector). Each file has 2 extensions: READNOISE-1 and READNOISE-2. Each extension is an image with dimensions 2040 × 2040 and units of electrons.
 
 ### Additional Product: Spectral WCS
 
-The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector). Each file has 2 extensions: CWAVE, CBAND, and WCS-WAVE. 
+The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector). Each file has 3 extensions: CWAVE, CBAND, and WCS-WAVE. 
 
 CWAVE is an image with dimensions 2,040 x 2,040. It contains the central wavelength in microns for each pixel.
 
-CBAND is an image with dimensions 2,040 x 2,040. It contains the bandwith in microns for each pixel.
+CBAND is an image with dimensions 2,040 x 2,040. It contains the bandwidth in microns for each pixel.
 
 WCS-WAVE is a table with 3 columns (X, Y, VALUES) and 1 row. This is equivalent to the WCS-WAVE extension in the Spectral Image MEF file described above.
