@@ -32,31 +32,25 @@ The content of each subdirectory is described in greater detail in the Data Prod
 
 ### Application Program Interfaces (APIs)
 
-IRSA provides API access to SPHEREx LVF images through version 2 of the VO Simple Image Access (SIA2) protocol. SIA2 allows users to query for a list of images that satisfy constraints based on position(s) on the sky, band, time, ID, and instrument. The list returned by the service includes data access URLs, which can be used to retrieve some or all of the images in the list using wget or curl. A brief summary of SIA2 for accessing SPHEREx data for IRSA is given below. Additional documentation on IRSA’s SIA2 service can be found on the IRSA website:
-
-https://irsa.ipac.caltech.edu/ibe/sia.html
+IRSA provides API access to SPHEREx Spectral Images through version 2 of the VO Simple Image Access (SIA2) protocol. SIA2 allows users to query for a list of images that satisfy constraints based on position(s) on the sky, band, time, ID, and instrument. The list returned by the service includes data access URLs, which can be used to retrieve some or all of the images in the list using wget or curl. A brief summary of SIA2 for accessing SPHEREx data for IRSA is given below. Additional [documentation on IRSA’s SIA2 service](https://irsa.ipac.caltech.edu/ibe/sia.html) can be found on the IRSA website:
 
 IRSA's generric SIA2 endpoint is:
 
-https://irsa.ipac.caltech.edu/SIA?
+`https://irsa.ipac.caltech.edu/SIA?`
 
-Users must add a COLLECTION to this endpoint to specify which dataset to saerch. SPHEREx-related COLLECTIONS include:
+Users must add a COLLECTION parameter to this endpoint to specify which dataset to search.  There are three SPHEREx-related SIA2 COLLECTIONS:
 
-SPHEREx Quick Release Wide-Field Spectral Images: COLLECTION=spherex_qr
+* SPHEREx Quick Release spectral image MEFs that are part of the SPHEREx Wide Survey can be accessed with: `COLLECTION=spherex_qr`
 
-IRSA’s SIA2 endpoint for querying SPHEREx quick release spectral images that are part of the **deep survey** is:
+* SPHEREx Quick Release spectral image MEFs that are part of the SPHEREx Deep Survey can be accessed with: `COLLECTION=spherex_qr_deep`
+  
+* SPHEREx Quick Release Calibration files can be accessed with: `COLLECTION=spherex_qr_cal`
 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr_deep
+You can use `wget` or `curl` to submit SIA2 queries from the command line. For example:
 
-IRSA’s SIA2 endpoint for querying SPHEREx quick release **calibration files** is:
+* wget -O example1.csv "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex&POS=circle+164.7+-5.8+0.01&RESPONSEFORMAT=CSV"
 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr_cal
-
-You can use wget or curl to submit SIA queries from the command line. For example:
-
-wget -O example1.csv "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex&POS=circle+164.7+-5.8+0.01&RESPONSEFORMAT=CSV"
-
-curl --output example2.csv "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex&POS=circle+164.7+-5.8+0.01&RESPONSEFORMAT=CSV"
+* curl --output example2.csv "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex&POS=circle+164.7+-5.8+0.01&RESPONSEFORMAT=CSV"
 
 See the next section to learn how to use Python wrappers around IRSA’s SIA2 service.
 
