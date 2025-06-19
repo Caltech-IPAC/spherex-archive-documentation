@@ -21,7 +21,7 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 
 *Filename Format:*
 `
-- 'level1_[Observation ID]_D[Detector Number]_spx_l2b_v[Version]_[Processing Date]'
+- `level1_[Observation ID]_D[Detector Number]_spx_l2b_v[Version]_[Processing Date]`
 
 *Where:* 
 
@@ -35,7 +35,7 @@ The main Quick Release data product is the Spectral Image MEF. There are 6 Spect
 
 *Example:*
 
-- 'level2_2025W18_2B_0001_1D1_spx_l2b-v12-2025-164.fits'
+- `level2_2025W18_2B_0001_1D1_spx_l2b-v12-2025-164.fits`
 
 
 ### Calibration Product: Absolute Gain Matrix
