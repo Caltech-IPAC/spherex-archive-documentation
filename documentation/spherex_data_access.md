@@ -16,16 +16,16 @@ The root of the SPHEREx data quick release data directories is:
 https://irsa.ipac.caltech.edu/ibe/data/spherex/qr
 
 The public data products are organized into subdirectories based on the following organizational scheme:
-* `abs_gain_matrix/cal-agm-v[Version]-[Processing Date]/[Detector]/`
-* `average_psf/cal-psf-v[Version]-[Processing Date]/[Detector]/`
-* `dark/cal-drk-v[Version]-[Processing Date]/[Detector]/`
-* `dichroic/base-[Processing Date]/[Detector]/`
-* `gain_factors/base-[Processing Date]/`
-* `level2/[Planning Period]/l2b-v[Version]-[Processing Date]/[Detector]/`
-* `nonfunc/base-[Processing Date]/[Detector]/`
-* `nonlinear_pars/base-[Processing Date]/[Detector]/`
-* `readnoise_pars/base-[Processing Date]/[Detector]/`
-* `spectral_wcs/base-[Processing Date]/[Detector]/`
+* Absolute Gain Matrix: `abs_gain_matrix/cal-agm-v[Version]-[Processing Date]/[Detector]/`
+* Exposure-Averaged Point Spread Functions (PSFs): `average_psf/cal-psf-v[Version]-[Processing Date]/[Detector]/`
+* Dark Current: `dark/cal-drk-v[Version]-[Processing Date]/[Detector]/`
+* Dichroic: `dichroic/base-[Processing Date]/[Detector]/`
+* Electronic Gain Factors: `gain_factors/base-[Processing Date]/`
+* Spectral Image Multi-Extension FITS Files (MEFs): `level2/[Planning Period]/l2b-v[Version]-[Processing Date]/[Detector]/`
+* Nonfunctional Pixels: `nonfunc/base-[Processing Date]/[Detector]/`
+* Nonlinearity Parameters: `nonlinear_pars/base-[Processing Date]/[Detector]/`
+* Read Noise Parameters: `readnoise_pars/base-[Processing Date]/[Detector]/`
+* Spectral WCS: `spectral_wcs/base-[Processing Date]/[Detector]/`
 
 The content of each subdirectory is described in greater detail in the Data Products section of this user guide and in the SPHEREx Explanatory Supplement.
 
