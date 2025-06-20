@@ -32,7 +32,8 @@ The SPHEREx focal plane is split with a dichroic to three short-wavelength and t
 
 3. **VARIANCE** - Variance of calibrated surface brightness flux in units of (MJy/sr)^2, stored as a 2,040 x 2,040 image.
 
-4. **ZODI** - Estimated zodiacal light background flux in units of MJy/sr, stored as a 2040 x 2040 image.
+4. **ZODI** - Modeled zodiacal light background flux in units of MJy/sr, stored as a 2040 x 2040 image. This has not been subtracted from the IMAGE extension.
+
 
 5. **PSF** - 121 Point-spread functions (PSFs); each PSF is represented as a 101 x 101 image and all 121 are assembled together into a cube.
 
