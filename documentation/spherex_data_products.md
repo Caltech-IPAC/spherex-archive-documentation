@@ -21,12 +21,12 @@ The main Quick Release data product is the Level 2 Spectral Image MEF. There are
 
 The SPHEREx focal plane is split with a dichroic to three short-wavelength and three long-wavelength detector arrays. Two focal plane assemblies (FPAs) simultaneously image the sky through a dichroic beam splitter. Each FPA contains three 2K x 2K detector arrays placed behind a set of linear variable filters (LVFs), providing narrow-band response with a band center that varies along one axis of the array. SPHEREx obtains spectra through multiple exposures, placing a given source at multiple positions in the field of view, where it is measured at multiple wavelengths by repointing the spacecraft.
 
-* Band 1: λ= 0.75 - 1.09 µm; R=41
+* Band 1: λ= 0.75 - 1.09 µm; R=39
 * Band 2: λ= 1.10 - 1.62 µm; R=41
 * Band 3: λ= 1.63 - 2.41 µm; R=41
 * Band 4: λ= 2.42 - 3.82 µm; R=35
-* Band 5: λ= 3.83 - 4.41 µm; R=110
-* Band 6: λ= 4.42 - 5.00 µm; R=130
+* Band 5: λ= 3.83 - 4.41 µm; R=112
+* Band 6: λ= 4.42 - 5.00 µm; R=128
   
 2. **FLAG** - Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image. The definition of the flags are provided in Table 8 of the SPHEREx Explanatory Supplement.
 
