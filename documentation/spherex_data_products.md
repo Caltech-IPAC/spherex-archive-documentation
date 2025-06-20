@@ -15,7 +15,7 @@ A detailed description of SPHEREx data products available to the public is provi
 
 ### Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
 
-The main Quick Release data product is the Spectral Image MEF. There are 6 Spectral MEFs (one for each detector) for each sky pointing. Each Spectral MEF is approximately 70 MB and contains 6 extensions:
+The main Quick Release data product is the Level 2 Spectral Image MEF. There are 6 Spectral MEFs (one for each detector) for each sky pointing. Each Spectral MEF is approximately 70 MB and contains 6 extensions:
 
 1. **IMAGE** - Calibrated surface brightness flux density in units of MJy/sr, stored as a 2040 x 2040 image. No zodiacal light subtraction is applied.
 
