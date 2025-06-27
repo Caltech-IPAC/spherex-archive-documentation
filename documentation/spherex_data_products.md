@@ -2,7 +2,7 @@
 
 A detailed description of SPHEREx data products available to the public is provided in the SPHEREx Explanatory Supplement. Here we provide a concise summary of the science, calibration, and additional data products available at IRSA. This summary includes filenaming conventions, for which we adopt the following definitions:
 
-- `Planning Period` is a designation by the SPHEREx project of the survey plan uploaded to the spacecraft, e.g. `2025W18_2B`
+- `Planning Period` designates the survey plan uploaded to the spacecraft, e.g. `2025W18_2B`. Each planning period covers approximately 3.5 days of operation.
 
 - `Observation ID` includes the survey planning period and the large and small slew counters, e.g. `2025W18_2B_0001_1`
 
