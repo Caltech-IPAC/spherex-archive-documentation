@@ -28,8 +28,8 @@ caption: SHEREx Data at IRSA
 ---
 
 
-documentation/spherex_data_products
-documentation/spherex_data_access
+spherex_data_products
+spherex_data_access
 ```
 
 
