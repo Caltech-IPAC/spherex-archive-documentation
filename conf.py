@@ -34,6 +34,7 @@ exclude_patterns += ['README.md',]
 
 # MyST-NB configuration
 nb_execution_timeout = 1200
+nb_execution_mode = 'off'
 
 # -- Options for HTML output -------------------------------------------------
 
