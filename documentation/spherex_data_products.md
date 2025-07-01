@@ -1,4 +1,4 @@
-## SPHEREx Data Products Available at IRSA
+# SPHEREx Data Products Available at IRSA
 
 A detailed description of SPHEREx data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf). Here we provide a concise summary of the science, calibration, and additional data products available at IRSA. This summary includes filenaming conventions, for which we adopt the following definitions:
 
@@ -13,7 +13,7 @@ A detailed description of SPHEREx data products available to the public is provi
 - `Processing Date` includes the year and the number of days into the year, e.g. `2025-164`
 
 
-### Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
+## Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
 
 The main Quick Release data product is the Level 2 Spectral Image MEF. There are 6 Spectral MEFs (one for each detector) for each sky pointing. Each Spectral MEF is approximately 70 MB and contains 6 extensions:
 
@@ -49,7 +49,7 @@ The SPHEREx focal plane is split with a dichroic to three short-wavelength and t
 - `level2_2025W18_2B_0001_1D1_spx_l2b-v12-2025-164.fits`
 
 
-### Calibration Product: Absolute Gain Matrix
+## Calibration Product: Absolute Gain Matrix
 
 The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector) with dimensions 2,040 × 2,040 and units of (MJy/sr) / (e−/s).
 
@@ -61,7 +61,7 @@ The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector)
 
 - `abs_gain_matrix_D1_spx_cal-agm-v4-2025-161.fits`
 
-### Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
+## Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
 
 The Exposure-Averaged Point Spread Functions (PSFs) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121. Each of the 121 layers represents a "super-resolution" PSF estimate in a different region (defined by an 11x11 grid) of the detector. Each PSF is a two-dimensional array with size of 101 × 101 pixels. The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent as one spectral image pixel (0.615 arcsec).
 
@@ -73,7 +73,7 @@ The Exposure-Averaged Point Spread Functions (PSFs) are ~6 MB FITS cubes (one fo
 
 - `average_psf_D1_spx_cal-psf-v4-2025-161.fits`
 
-### Calibration Product: Dark Current
+## Calibration Product: Dark Current
 
 The Dark Current products are ~16 MB FITS image files (one per detector) with dimensions 2,040 x 2,040 and units of electron/s.
 
@@ -85,7 +85,7 @@ The Dark Current products are ~16 MB FITS image files (one per detector) with di
 
 - `dark_D1_spx_cal-drk-v4-2025-161.fits`
 
-### Calibration Product: Dichroic
+## Calibration Product: Dichroic
 
 The Dichroic products are ~16 MB FITS image files with dimensions 2,040 x 2,040. The pixel value is 0 for pixels that are unaffected by flux attenuation due to the dicroic filter and 1 for impacted pixels. A pixel is considered impacted if the flux attenuation is 50% or higher. Note that only bands 3 and 4 have any non-zero values.
 
@@ -97,7 +97,7 @@ The Dichroic products are ~16 MB FITS image files with dimensions 2,040 x 2,040.
 
 - `dichroic_D1_spx_base-2025-158.fits`
 
-### Calibration Product: Electronic Gain Factors
+## Calibration Product: Electronic Gain Factors
 
 The Electronic Gain Factor product is a single YAML file that includes the provenance information for the detectors and a list of 32 gain values per detector.
 
@@ -109,7 +109,7 @@ The Electronic Gain Factor product is a single YAML file that includes the prove
 
 - `gain_factors_spx_base-2025-158.yaml`
 
-### Additional Product: Nonfunctional Pixels
+## Additional Product: Nonfunctional Pixels
 
 The Nonfunctional Pixel products are ~32 MB FITS image files (one per detector) with dimensions 2,040 x 2,040. Pixel values are 1 for pixels known to be permanently non-functioning and 0 otherwise.
 
@@ -121,7 +121,7 @@ The Nonfunctional Pixel products are ~32 MB FITS image files (one per detector) 
 
 - `nonfunc_D1_spx_base-2025-158.fits`
 
-### Additional Product: Nonlinearity Parameters
+## Additional Product: Nonlinearity Parameters
 
 The Nonlinearity Parameter products are ~79 MB multi-extension FITS files (one per detector). Each file contains 5 extensions (Q_nl, b1, b2, b3, Qmax), each of which is an image with dimensions 2,040 x 2,040. These extensions are described in Section 3.2.1 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf).
 
@@ -133,7 +133,7 @@ The Nonlinearity Parameter products are ~79 MB multi-extension FITS files (one p
 
 - `nonlinear_pars_D1_spx_base-2025-158.fits`
 
-### Additional Product: Read Noise Parameters
+## Additional Product: Read Noise Parameters
 
 The Read Noise Parameters products are ~48 MB multi-extension FITS files (one per detector). Each file has 2 extensions: READNOISE-1 and READNOISE-2. Each extension is an image with dimensions 2040 × 2040 and units of electrons.
 
@@ -145,7 +145,7 @@ The Read Noise Parameters products are ~48 MB multi-extension FITS files (one pe
 
 - `readnoise_pars_D1_spx_base-2025-158.fits`
 
-### Additional Product: Spectral WCS
+## Additional Product: Spectral WCS
 
 The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector). Each file has 3 extensions: CWAVE, CBAND, and WCS-WAVE.
 
