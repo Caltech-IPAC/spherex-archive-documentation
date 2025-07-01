@@ -27,7 +27,7 @@ The SPHEREx focal plane is split with a dichroic to three short-wavelength and t
 * Band 4: λ= 2.42 - 3.82 µm; R=35
 * Band 5: λ= 3.83 - 4.41 µm; R=112
 * Band 6: λ= 4.42 - 5.00 µm; R=128
-  
+
 2. **FLAG** - Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image. The definition of the flags are provided in Table 8 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf).
 
 3. **VARIANCE** - Variance of calibrated surface brightness flux in units of (MJy/sr)^2, stored as a 2,040 x 2,040 image.
@@ -42,7 +42,7 @@ The SPHEREx focal plane is split with a dichroic to three short-wavelength and t
 
 *Filename Format:*
 
-- 'level2_[Observation ID]_D[Detector]_spx_l2b_v[Version]_[Processing Date].fits'
+- `level2_[Observation ID]_D[Detector]_spx_l2b_v[Version]_[Processing Date].fits`
 
 *Example:*
 
@@ -60,7 +60,7 @@ The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector)
 *Example:*
 
 - `abs_gain_matrix_D1_spx_cal-agm-v4-2025-161.fits`
-  
+
 ### Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
 
 The Exposure-Averaged Point Spread Functions (PSFs) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121. Each of the 121 layers represents a "super-resolution" PSF estimate in a different region (defined by an 11x11 grid) of the detector. Each PSF is a two-dimensional array with size of 101 × 101 pixels. The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent as one spectral image pixel (0.615 arcsec).
@@ -72,7 +72,7 @@ The Exposure-Averaged Point Spread Functions (PSFs) are ~6 MB FITS cubes (one fo
 *Example:*
 
 - `average_psf_D1_spx_cal-psf-v4-2025-161.fits`
-  
+
 ### Calibration Product: Dark Current
 
 The Dark Current products are ~16 MB FITS image files (one per detector) with dimensions 2,040 x 2,040 and units of electron/s.
@@ -147,7 +147,7 @@ The Read Noise Parameters products are ~48 MB multi-extension FITS files (one pe
 
 ### Additional Product: Spectral WCS
 
-The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector). Each file has 3 extensions: CWAVE, CBAND, and WCS-WAVE. 
+The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector). Each file has 3 extensions: CWAVE, CBAND, and WCS-WAVE.
 
 CWAVE is an image with dimensions 2,040 x 2,040. It contains the central wavelength in microns for each pixel.
 
@@ -162,4 +162,3 @@ WCS-WAVE is a table with 3 columns (X, Y, VALUES) and 1 row. This is equivalent 
 *Example:*
 
 - `rspectral_wcs_D1_spx_base-2025-158.fits`
-
