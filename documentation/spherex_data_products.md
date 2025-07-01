@@ -115,7 +115,7 @@ The Nonfunctional Pixel products are ~32 MB FITS image files (one per detector) 
 
 *Filename Format:*
 
-- `nonfunc_D[Detector]_spx_base-[Processing Date[.fits`
+- `nonfunc_D[Detector]_spx_base-[Processing Date].fits`
 
 *Example:*
 
