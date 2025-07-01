@@ -43,7 +43,7 @@ nb_execution_timeout = 1200
 html_theme = 'sphinx_book_theme'
 html_title = 'SPHEREx Archive Documentation'
 html_logo = '_static/irsa_logo.png'
-#html_favicon = '_static/favicon.ico'
+html_favicon = '_static/irsa-favicon.ico'
 html_theme_options = {
     "github_url": "https://github.com/Caltech-IPAC/SPHEREx-archive-documentation",
     "repository_url": "https://github.com/Caltech-IPAC/SPHEREx-archive-documentation",
