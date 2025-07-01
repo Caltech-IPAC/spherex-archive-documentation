@@ -1,6 +1,6 @@
 ## SPHEREx Data Products Available at IRSA
 
-A detailed description of SPHEREx data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/spherex_explanatory_supplement.pdf). Here we provide a concise summary of the science, calibration, and additional data products available at IRSA. This summary includes filenaming conventions, for which we adopt the following definitions:
+A detailed description of SPHEREx data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf). Here we provide a concise summary of the science, calibration, and additional data products available at IRSA. This summary includes filenaming conventions, for which we adopt the following definitions:
 
 - `Planning Period` designates the survey plan uploaded to the spacecraft, e.g. `2025W18_2B`. Each planning period covers approximately 3.5 days of operation.
 
@@ -28,7 +28,7 @@ The SPHEREx focal plane is split with a dichroic to three short-wavelength and t
 * Band 5: λ= 3.83 - 4.41 µm; R=112
 * Band 6: λ= 4.42 - 5.00 µm; R=128
   
-2. **FLAG** - Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image. The definition of the flags are provided in Table 8 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/spherex_explanatory_supplement.pdf).
+2. **FLAG** - Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image. The definition of the flags are provided in Table 8 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf).
 
 3. **VARIANCE** - Variance of calibrated surface brightness flux in units of (MJy/sr)^2, stored as a 2,040 x 2,040 image.
 
@@ -42,7 +42,7 @@ The SPHEREx focal plane is split with a dichroic to three short-wavelength and t
 
 *Filename Format:*
 
-- `level1_[Observation ID]_D[Detector]_spx_l2b_v[Version]_[Processing Date]`
+- 'level2_[Observation ID]_D[Detector]_spx_l2b_v[Version]_[Processing Date].fits'
 
 *Example:*
 
@@ -123,7 +123,7 @@ The Nonfunctional Pixel products are ~32 MB FITS image files (one per detector) 
 
 ### Additional Product: Nonlinearity Parameters
 
-The Nonlinearity Parameter products are ~79 MB multi-extension FITS files (one per detector). Each file contains 5 extensions (Q_nl, b1, b2, b3, Qmax), each of which is an image with dimensions 2,040 x 2,040. These extensions are described in Section 3.2.1 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/spherex_explanatory_supplement.pdf).
+The Nonlinearity Parameter products are ~79 MB multi-extension FITS files (one per detector). Each file contains 5 extensions (Q_nl, b1, b2, b3, Qmax), each of which is an image with dimensions 2,040 x 2,040. These extensions are described in Section 3.2.1 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf).
 
 *Filename Format:*
 
