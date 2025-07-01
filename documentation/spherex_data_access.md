@@ -27,7 +27,7 @@ The public data products are organized into subdirectories based on the followin
 * **Read Noise Parameters:** `readnoise_pars/base-[Processing Date]/[Detector]/`
 * **Spectral WCS:** `spectral_wcs/base-[Processing Date]/[Detector]/`
 
-The content of each subdirectory is described in greater detail in the Data Products section of this user guide and in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/spherex_explanatory_supplement.pdf).
+The content of each subdirectory is described in greater detail in the Data Products section of this user guide and in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf).
 
 
 ### Application Program Interfaces (APIs)
