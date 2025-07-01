@@ -19,15 +19,14 @@ The community will also mine SPHEREx data and combine it with synergistic data s
 More information is available in the "Mission Overview" section of the SPHEREx Explanatory Supplement.
 
 
+## SPHEREx Data at IRSA
+
 ```{toctree}
 ---
 maxdepth: 1
-caption: SPHEREx Data at IRSA
 ---
 
-
 spherex_data_products
-
 spherex_data_access
 ```
 
@@ -38,4 +37,4 @@ spherex_data_access
 
 [SPHEREx project website](https://spherex.caltech.edu/)
 
-[SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/spherex_explanatory_supplement.pdf)
+[SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf)
