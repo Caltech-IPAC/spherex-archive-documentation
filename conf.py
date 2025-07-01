@@ -3,8 +3,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'SPHEREx Archive Documentation'
-copyright = '2025 SPHEREx Archive -- IPAC/IRSA'
-author = 'SPHEREx Archive -- IPAC/IRSA'
+copyright = '2025 IPAC/IRSA'
+author = 'IPAC/IRSA'
 
 
 # -- General configuration ---------------------------------------------------
@@ -46,13 +46,12 @@ html_title = 'SPHEREx Archive Documentation'
 html_logo = '_static/irsa_logo.png'
 html_favicon = '_static/irsa-favicon.ico'
 html_theme_options = {
-    "github_url": "https://github.com/Caltech-IPAC/SPHEREx-archive-documentation",
-    "repository_url": "https://github.com/Caltech-IPAC/SPHEREx-archive-documentation",
+    "github_url": "https://github.com/Caltech-IPAC/spherex-archive-documentation",
+    "repository_url": "https://github.com/Caltech-IPAC/spherex-archive-documentation",
     "repository_branch": "main",
     "use_repository_button": True,
     "use_issues_button": True,
     "use_edit_page_button": True,
-    "launch_buttons": {"binderhub_url": "https://mybinder.org",},
     "logo": {
         "link": "https://irsa.ipac.caltech.edu/",
         "alt_text": "NASA/IPAC Infrared Science Archive - Home",
