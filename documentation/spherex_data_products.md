@@ -8,7 +8,7 @@ A detailed description of SPHEREx data products available to the public is provi
 
 - `Detector` is an integer from 1 through 6
 
-- `Version` is the version of this file, e.g. '12'
+- `Version` is the version of this file, e.g. 'l2' for "level 2" data products
 
 - `Processing Date` includes the year and the number of days into the year, e.g. `2025-164`
 
