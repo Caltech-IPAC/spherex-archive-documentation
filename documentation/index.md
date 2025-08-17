@@ -1,4 +1,4 @@
-# User Guide
+# SPHEREx Archive at IRSA User Guide
 
 
 ## Document Purpose and Scope
