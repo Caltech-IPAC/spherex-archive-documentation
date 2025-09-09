@@ -1,6 +1,6 @@
 # SPHEREx Data Products Available at IRSA
 
-A detailed description of SPHEREx data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf).
+A detailed description of SPHEREx data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 Here we provide a concise summary of the science, calibration, and additional data products available at IRSA.
 This summary includes filenaming conventions, for which we adopt the following definitions:
 
@@ -40,7 +40,7 @@ IMAGE
 
 FLAG
  : Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image.
-   The definition of the flags are provided in Table 8 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf).
+   The definition of the flags are provided in Table 8 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 
 VARIANCE
  : Variance of calibrated surface brightness flux in units of (MJy/sr)^2, stored as a 2,040 x 2,040 image.
@@ -174,7 +174,7 @@ Pixel values are 1 for pixels known to be permanently non-functioning and 0 othe
 
 The Nonlinearity Parameter products are ~79 MB multi-extension FITS files (one per detector).
 Each file contains 5 extensions (Q_nl, b1, b2, b3, Qmax), each of which is an image with dimensions 2,040 x 2,040.
-These extensions are described in Section 3.2.1 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf).
+These extensions are described in Section 3.2.1 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 
 
 *Filename Format:*

@@ -27,4 +27,4 @@ More information is available in the "Mission Overview" section of the SPHEREx E
 
 [SPHEREx project website](https://spherex.caltech.edu/)
 
-[SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf)
+[SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf)
