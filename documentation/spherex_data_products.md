@@ -22,42 +22,53 @@ The main Quick Release data product is the Level 2 Spectral Image MEF.
 There are 6 Spectral MEFs (one for each detector) for each sky pointing.
 Each Spectral MEF is approximately 70 MB and contains 6 extensions:
 
-1. **IMAGE** - Calibrated surface brightness flux density in units of MJy/sr, stored as a 2040 x 2040 image.
-No zodiacal light subtraction is applied.
+IMAGE
+ : Calibrated surface brightness flux density in units of MJy/sr, stored as a 2040 x 2040 image.
+   No zodiacal light subtraction is applied.
 
-The SPHEREx focal plane is split with a dichroic to three short-wavelength and three long-wavelength detector arrays.
-Two focal plane assemblies (FPAs) simultaneously image the sky through a dichroic beam splitter.
-Each FPA contains three 2K x 2K detector arrays placed behind a set of linear variable filters (LVFs), providing narrow-band response with a band center that varies along one axis of the array.
-SPHEREx obtains spectra through multiple exposures, placing a given source at multiple positions in the field of view, where it is measured at multiple wavelengths by repointing the spacecraft.
+   The SPHEREx focal plane is split with a dichroic to three short-wavelength and three long-wavelength detector arrays.
+   Two focal plane assemblies (FPAs) simultaneously image the sky through a dichroic beam splitter.
+   Each FPA contains three 2K x 2K detector arrays placed behind a set of linear variable filters (LVFs), providing narrow-band response with a band center that varies along one axis of the array.
+   SPHEREx obtains spectra through multiple exposures, placing a given source at multiple positions in the field of view, where it is measured at multiple wavelengths by repointing the spacecraft.
 
-* Band 1: λ= 0.75 - 1.09 µm; R=39
-* Band 2: λ= 1.10 - 1.62 µm; R=41
-* Band 3: λ= 1.63 - 2.41 µm; R=41
-* Band 4: λ= 2.42 - 3.82 µm; R=35
-* Band 5: λ= 3.83 - 4.41 µm; R=112
-* Band 6: λ= 4.42 - 5.00 µm; R=128
+   * Band 1: λ= 0.75 - 1.09 µm; R=39
+   * Band 2: λ= 1.10 - 1.62 µm; R=41
+   * Band 3: λ= 1.63 - 2.41 µm; R=41
+   * Band 4: λ= 2.42 - 3.82 µm; R=35
+   * Band 5: λ= 3.83 - 4.41 µm; R=112
+   * Band 6: λ= 4.42 - 5.00 µm; R=128
 
-2. **FLAG** - Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image.
-The definition of the flags are provided in Table 8 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf).
+FLAG
+ : Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image.
+   The definition of the flags are provided in Table 8 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR_v1.0.pdf).
 
-3. **VARIANCE** - Variance of calibrated surface brightness flux in units of (MJy/sr)^2, stored as a 2,040 x 2,040 image.
+VARIANCE
+ : Variance of calibrated surface brightness flux in units of (MJy/sr)^2, stored as a 2,040 x 2,040 image.
 
-4. **ZODI** - Modeled zodiacal light background flux in units of MJy/sr, stored as a 2040 x 2040 image.
-This has not been subtracted from the IMAGE extension.
+ZODI
+ : Modeled zodiacal light background flux in units of MJy/sr, stored as a 2040 x 2040 image.
+   This has not been subtracted from the IMAGE extension.
 
-5. **PSF** - 121 Point-spread functions (PSFs); each PSF is represented as a 101 x 101 image and all 121 are assembled together into a cube.
+PSF
+ : 121 Point-spread functions (PSFs); each PSF is represented as a 101 x 101 image and all 121 are assembled together into a cube.
 
-6. **WCS-WAVE** - Spectral World Coordinate System (WCS) FITS-compliant lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths.
-The lookup table consists of 1 row with 3 columns (X, Y, VALUES).
-X and Y are each arrays defining a grid of control points in spectral image pixel space.
-VALUES is an array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth.
-Originally adopted to support the unique nature of the SPHEREx LVF filters, this rarely-used part of the FITS standard has yet to be implemented by all readers.
-If your FITS client software doesn't automatically recognize this, you can manually determine the central wavelength or bandwidth at an arbitrary pixel location by identifying the four nearest control points and applying bilinear interpolation.
-This method yields values accurate to within approximately 1 nm.
- The information in the WCS-WAVE extension of the Spectral Image MEF is also provided in a stand-alone data product described below ("Additional Product: Spectral WCS").
-The fidelity of the WCS-WAVE lookup table is intended for visualization purposes.
-For science analysis, use the CWAVE and CBAND extensions in the Spectral WCS calibration product.
+WCS-WAVE
+ : Spectral World Coordinate System (WCS) FITS-compliant lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths.
+   The lookup table consists of 1 row with 3 columns (X, Y, VALUES).
 
+   X and Y are each arrays defining a grid of control points in spectral image pixel space.
+
+   VALUES is an array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth.
+
+   :::{note}
+   This was originally adopted to support the unique nature of the SPHEREx LVF filters, this rarely-used part of the FITS standard has yet to be implemented by all readers.
+
+   If your FITS client software doesn't automatically recognize this, you can manually determine the central wavelength or bandwidth at an arbitrary pixel location by identifying the four nearest control points and applying bilinear interpolation.
+   This method yields values accurate to within approximately 1 nm.
+   The information in the WCS-WAVE extension of the Spectral Image MEF is also provided in a stand-alone data product described below ("Additional Product: Spectral WCS").
+   The fidelity of the WCS-WAVE lookup table is intended for visualization purposes.
+   For science analysis, use the CWAVE and CBAND extensions in the Spectral WCS calibration product.
+   :::
 
 *Filename Format:*
 
