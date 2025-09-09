@@ -41,9 +41,11 @@ The list returned by the service includes data access URLs, which can be used to
 A brief summary of SIA2 for accessing SPHEREx data for IRSA is given below.
 Additional [documentation on IRSA’s SIA2 service](https://irsa.ipac.caltech.edu/ibe/sia.html) can be found on the IRSA website:
 
-Note: SPHEREx data are ingested on a weekly basis.
+:::{note}
+SPHEREx data are ingested on a weekly basis.
 Due to the nature of the ingestion process, new SPHEREx data will first be available in the browsable directories and in the SPHEREx Data Explorer GUI.
 Availability via SIA2 and Python libraries like Astroquery and PyVO will lag on the order of a day.
+:::
 
 IRSA's generric SIA2 endpoint is:
 
@@ -69,10 +71,13 @@ See the next section to learn how to use Python wrappers around IRSA’s SIA2 se
 
 If you would like to take advantage of IRSA’s SIA2 service for querying SPHEREx images, but prefer to use Python rather than the command line, you may be interested in using one of two Python libraries:
 
-*	**PyVO**  -- This module lets you find and retrieve astronomical data available from archives that support standard IVOA protocols.
-*	**Astroquery**  -- This module provides access to IRSA's public astrophysics data from projects such as SPHEREx, Euclid, Spitzer, WISE/NEOWISE, SOFIA, IRTF, 2MASS, Herschel, IRAS, and ZTF.
+[PyVO](https://github.com/astropy/pyvo)
+ : This module lets you find and retrieve astronomical data available from archives that support standard IVOA protocols.
 
-Examples of data queries using both of these libraries can be found in [IRSA’s Python Notebook Tutorial Repository](https://caltech-ipac.github.io/irsa-tutorials/):
+[Astroquery](https://github.com/astropy/astroquery)
+ : This module provides access to IRSA's public astrophysics data from projects such as SPHEREx, Euclid, Spitzer, WISE/NEOWISE, SOFIA, IRTF, 2MASS, Herschel, IRAS, and ZTF.
+
+Examples of data queries using both of these libraries can be found in [IRSA’s Python Notebook Tutorial Repository](https://caltech-ipac.github.io/irsa-tutorials/).
 
 ## SPHEREx Data Explorer Web Application
 
