@@ -65,7 +65,7 @@ WCS-WAVE
 
    If your FITS client software doesn't automatically recognize this, you can manually determine the central wavelength or bandwidth at an arbitrary pixel location by identifying the four nearest control points and applying bilinear interpolation.
    This method yields values accurate to within approximately 1 nm.
-   The information in the WCS-WAVE extension of the Spectral Image MEF is also provided in a stand-alone data product described below ("Additional Product: Spectral WCS").
+   The information in the WCS-WAVE extension of the Spectral Image MEF is also provided in a stand-alone data product described below in [](#data-products-spectral-wcs).
    The fidelity of the WCS-WAVE lookup table is intended for visualization purposes.
    For science analysis, use the CWAVE and CBAND extensions in the Spectral WCS calibration product.
    :::
@@ -201,7 +201,7 @@ Each extension is an image with dimensions 2040 × 2040 and units of electrons.
 
 - `readnoise_pars_D1_spx_base-2025-158.fits`
 
-
+(data-products-spectral-wcs)=
 ## Additional Product: Spectral WCS
 
 The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector).
