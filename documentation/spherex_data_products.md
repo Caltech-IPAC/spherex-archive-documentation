@@ -38,6 +38,10 @@ The SPHEREx focal plane is split with a dichroic to three short-wavelength and t
 5. **PSF** - 121 Point-spread functions (PSFs); each PSF is represented as a 101 x 101 image and all 121 are assembled together into a cube.
 
 6. **WCS-WAVE** - Spectral World Coordinate System (WCS) FITS-compliant lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths. The lookup table consists of 1 row with 3 columns (X, Y, VALUES). X and Y are each arrays defining a grid of control points in spectral image pixel space. VALUES is an array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth. Originally adopted to support the unique nature of the SPHEREx LVF filters, this rarely-used part of the FITS standard has yet to be implemented by all readers. If your FITS client software doesn't automatically recognize this, you can manually determine the central wavelength or bandwidth at an arbitrary pixel location by identifying the four nearest control points and applying bilinear interpolation. This method yields values accurate to within approximately 1 nm.  The information in the WCS-WAVE extension of the Spectral Image MEF is also provided in a stand-alone data product described below ("Additional Product: Spectral WCS").
+The fidelity of the WCS-WAVE lookup table is intended for visualization purposes.
+For science analysis, use the CWAVE and CBAND extensions in the Spectral WCS calibration product.
+
+
 
 
 *Filename Format:*
@@ -147,7 +151,9 @@ The Read Noise Parameters products are ~48 MB multi-extension FITS files (one pe
 
 ## Additional Product: Spectral WCS
 
-The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector). Each file has 3 extensions: CWAVE, CBAND, and WCS-WAVE.
+The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector).
+Each file has 3 extensions: CWAVE, CBAND, and WCS-WAVE.
+For science analysis, use the values in the CWAVE and CBAND layers, not the WCS-WAVE which is intended for visualization.
 
 CWAVE is an image with dimensions 2,040 x 2,040. It contains the central wavelength in microns for each pixel.
 
