@@ -22,7 +22,7 @@ The main Quick Release data product is the Level 2 Spectral Image MEF.
 There are 6 Spectral MEFs (one for each detector) for each sky pointing.
 Each Spectral MEF is approximately 70 MB and contains 6 extensions:
 
-IMAGE
+HDU 1: IMAGE
  : Calibrated surface brightness flux density in units of MJy/sr, stored as a 2040 x 2040 image.
    No zodiacal light subtraction is applied.
 
@@ -38,21 +38,21 @@ IMAGE
    * Band 5: λ= 3.83 - 4.41 µm; R=112
    * Band 6: λ= 4.42 - 5.00 µm; R=128
 
-FLAG
+HDU 2: FLAG
  : Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image.
    The definition of the flags are provided in Table 8 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 
-VARIANCE
+HDU 3: VARIANCE
  : Variance of calibrated surface brightness flux in units of (MJy/sr)^2, stored as a 2,040 x 2,040 image.
 
-ZODI
+HDU 4: ZODI
  : Modeled zodiacal light background flux in units of MJy/sr, stored as a 2040 x 2040 image.
    This has not been subtracted from the IMAGE extension.
 
-PSF
+HDU 5: PSF
  : 121 Point-spread functions (PSFs); each PSF is represented as a 101 x 101 image and all 121 are assembled together into a cube.
 
-WCS-WAVE
+HDU 6: WCS-WAVE
  : Spectral World Coordinate System (WCS) FITS-compliant lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths.
    The lookup table consists of 1 row with 3 columns (X, Y, VALUES).
 
