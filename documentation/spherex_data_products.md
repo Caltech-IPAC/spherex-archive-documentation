@@ -38,7 +38,7 @@ HDU 1: IMAGE
    * Band 5: λ= 3.83 - 4.41 µm; R=112
    * Band 6: λ= 4.42 - 5.00 µm; R=128
 
-HDU 2: FLAG
+HDU 2: FLAGS
  : Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image.
    The definition of the flags are provided in Table 8 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 
