@@ -5,7 +5,7 @@ IRSA provides layered access to these data to support a variety of use cases and
 These layers include:
 
 * **Browsable Directories:** SPHEREx on-premises data products are laid out in directories that can be navigated with standard web browsers.
-* **Application Program Interfaces:** IRSA provides SPHEREx data access APIs that are compliant with International Virtual Observatory Alliance (IVOA) standards.
+* **Application Program Interfaces:** IRSA provides SPHEREx data access APIs, most of which are compliant with International Virtual Observatory Alliance (IVOA) standards.
 * **Python Packages:** SPHEREx data at IRSA are accessible via the Python packages pyvo and astroquery
 * **SPHEREx Data Explorer:** IRSA provides a web-based Graphical User Interface (GUI) that makes it easy to search for, visualize, and download SPHEREx data.
 
@@ -35,6 +35,8 @@ The content of each subdirectory is described in greater detail in the Data Prod
 
 ## Application Program Interfaces (APIs)
 
+### SPHEREx Spectral Image MEFs and Calibration Files are available through the IVOA Simple Image Access Protocol
+
 IRSA provides API access to SPHEREx Spectral Images through version 2 of the VO Simple Image Access (SIA2) protocol.
 SIA2 allows users to query for a list of images that satisfy constraints based on position(s) on the sky, band, time, ID, and instrument.
 The list returned by the service includes data access URLs, which can be used to retrieve some or all of the images in the list using wget or curl.
@@ -47,7 +49,7 @@ Due to the nature of the ingestion process, new SPHEREx data will first be avail
 Availability via SIA2 and Python libraries like Astroquery and PyVO will lag on the order of a day.
 :::
 
-IRSA's generric SIA2 endpoint is:
+IRSA's generic SIA2 endpoint is:
 
 `https://irsa.ipac.caltech.edu/SIA?`
 
@@ -63,9 +65,21 @@ Users must add a `COLLECTION` parameter to this endpoint to specify which datase
 You can use `wget` or `curl` to submit SIA2 queries from the command line.
 For example:
 
-* `wget -O example1.html "https://irsatest.ipac.caltech.edu/SIA?COLLECTION=spherex_qr&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
+* `wget -O example1.html "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
 
-See the next section to learn how to use Python wrappers around IRSA’s SIA2 service.
+See the section on Python packages to learn how to use Python wrappers around IRSA’s SIA2 service.
+
+### Cutouts of SPHEREx Spectral Image MEFs
+
+SPHEREx Spectral Image MEFs are available on premises at IPAC and on the cloud.
+
+If you have identified the access URL for an on-premises Spectral Image, you can request a cutout of this MEF by appending a query string containing the center and size parameters. The parameters are described in more detail here:
+
+`https://irsa.ipac.caltech.edu/ibe/cutouts.html`
+
+**Example:**
+
+`curl -o cutout.fits "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr/level2/2025W19_2B/l2b-v11-2025-163/3/level2_2025W19_2B_0073_2D3_spx_l2b-v11-2025-163.fits?center=156.09328159,-41.64466331&size=0.1"`
 
 ## Python packages: PyVO & Astroquery
 
