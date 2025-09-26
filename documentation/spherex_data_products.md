@@ -1,4 +1,4 @@
-# SPHEREx Data Products Available at IRSA
+ SPHEREx Data Products Available at IRSA
 
 A detailed description of SPHEREx data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 Here we provide a concise summary of the science, calibration, and additional data products available at IRSA.
@@ -7,7 +7,10 @@ This summary includes filenaming conventions, for which we adopt the following d
 - `Planning Period` designates the survey plan uploaded to the spacecraft, e.g. `2025W18_2B`.
 Each planning period covers approximately 3.5 days of operation.
 
-- `Observation ID` includes the survey planning period and the large and small slew counters, e.g. `2025W18_2B_0001_1`.
+- `Observation ID` includes the survey planning period and the large and small slew counters.
+For example, `2025W18_2B_0001_1` contains the planning period (`2025W18_2B`), the large slew counter (`0001`), and the small slew counter (`1`).
+Each large slew has a maximum of 4 small slews, so the allowed small slew counter range is 1 to 4.
+Some large slews will have fewer than 4 small slews.
 
 - `Detector` is an integer from 1 through 6.
 
@@ -18,8 +21,10 @@ Each planning period covers approximately 3.5 days of operation.
 
 ## Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
 
-The main Quick Release data product is the Level 2 Spectral Image MEF.
+The main Quick Release data product is the Level 2 Spectral Image MEF,as described in Section 2.1 of the [Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+
 There are 6 Spectral MEFs (one for each detector) for each sky pointing.
+Because data quality assessments are evaluated per spectral image band, some observations will not include all 6 bands in the archive.
 Each Spectral MEF is approximately 70 MB and contains 6 extensions:
 
 HDU 1: IMAGE
@@ -40,7 +45,7 @@ HDU 1: IMAGE
 
 HDU 2: FLAGS
  : Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image.
-   The definition of the flags are provided in Table 8 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+   The definition of the flags are provided in Table 10 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 
 HDU 3: VARIANCE
  : Variance of calibrated surface brightness flux in units of (MJy/sr)^2, stored as a 2,040 x 2,040 image.
@@ -78,6 +83,30 @@ HDU 6: WCS-WAVE
 
 - `level2_2025W18_2B_0001_1D1_spx_l2b-v12-2025-164.fits`
 
+## Cutouts of Spectral Image MEFs
+
+IRSA enables users to access rectangular cutouts of a SPHEREx Spectral Image MEF by simply appending a [query string](https://irsa.ipac.caltech.edu/ibe/cutouts.html) containing center and size parameters to the image URL.
+These cutout MEFs contain the same HDUs as the original Spectral Images (IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE). However, the IMAGE, FLAGS, VARIANCE, AND ZODI HDUs have been modified to include only those pixels within the specified cutout size.
+The WCS-WAVE HDU has also modified to provide the correct mapping between the pixels in the cutout to wavelength.
+The PSF HDU from the original spectral image is included unmodified in the cutout MEF.
+
+The spatially-varying PSF is represented as an image cube with 121 planes.
+Each plane is a 101x101 pixel image representing a PSF for a different region of the detector. Users interested in performing photometry on a cutout using the information in the cutout PSF HDU will need to understand how to find the most applicable PSF cube plane for each pixel in the cutout.
+The basic steps are described below, and a [Python notebook tutorial](https://caltech-ipac.github.io/irsa-tutorials/) is provided to help users get started with a simple implementation.
+
+1. Determine the 0-based pixel coordinates of the position of interest in the IMAGE HDU of the cutout.
+
+2. Determine the 0-based pixel coordinates of the position of interest in the IMAGE HDU of the original Spectral Image.
+
+```
+xpix_orig = 1 + xpix_cutout - CRPIX1A
+ypix_orig = 1 + ypix_cutout - CRPIX2A
+```
+
+3. Examine the header of the PSF HDU of the cutout to determine the PSF zone and cube plane corresponding to the pixel of interest in the original Spectral Image.
+
+The PSF HDU has a header containing the keywords `XCTR_*`, `YCTR_*`, `XWID_*`, and `YWID_*`, where * goes from [1 to 121].
+To determine if a pixel in the original Spectral Image falls within a PSF zone, simply find the closest `XCTR_*` and `YCTR_*` to determine the cube plane that contains the corresponding PSF for this zone.
 
 ## Calibration Product: Absolute Gain Matrix
 
