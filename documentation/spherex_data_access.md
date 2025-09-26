@@ -13,7 +13,7 @@ Each of these data access layers is described in greater detail in the subsectio
 
 ## Browsable Directories
 SPHEREx data products are laid out in directories that can be navigated with standard web browsers.
-This is convenient for users to get a quick sense of the types of data products that are available, to quickly download some examples by clicking through the directory tree, and to script bulk downloads using wget or curl.
+This is convenient for users to get a quick sense of the types of data products that are available, to quickly download some examples by clicking through the directory tree, and to script bulk downloads using `wget` or `curl`.
 
 The root of the SPHEREx data quick release data directories is:
 https://irsa.ipac.caltech.edu/ibe/data/spherex/qr
@@ -54,7 +54,7 @@ IRSA's generic SIA2 endpoint is:
 `https://irsa.ipac.caltech.edu/SIA?`
 
 Users must add a `COLLECTION` parameter to this endpoint to specify which dataset to search.
- There are three SPHEREx-related SIA2 collections:
+There are three SPHEREx-related SIA2 collections:
 
 * SPHEREx Quick Release Spectral Image MEFs that are part of the SPHEREx **Wide Survey** can be accessed with: `COLLECTION=spherex_qr`
 
