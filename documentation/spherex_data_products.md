@@ -92,7 +92,7 @@ The PSF HDU from the original spectral image is included unmodified in the cutou
 
 The spatially-varying PSF is represented as an image cube with 121 planes.
 Each plane is a 101x101 pixel image representing a PSF for a different region of the detector. Users interested in performing photometry on a cutout using the information in the cutout PSF HDU will need to understand how to find the most applicable PSF cube plane for each pixel in the cutout.
-The basic steps are described below, and a [https://caltech-ipac.github.io/irsa-tutorials/](Python notebook tutorial) is provided to help users get started with a simple implementation.
+The basic steps are described below, and a [Python notebook tutorial](https://caltech-ipac.github.io/irsa-tutorials/) is provided to help users get started with a simple implementation.
 
 1. Determine the 0-based pixel coordinates of the position of interest in the IMAGE HDU of the cutout.
 
