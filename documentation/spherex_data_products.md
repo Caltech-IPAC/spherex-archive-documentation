@@ -1,6 +1,14 @@
 # SPHEREx Data Products
 
-A detailed description of SPHEREx data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+IRSA began releasing SPHEREx Spectral Image data on a weekly basis in July 2025 (Quick Release 1; QR1).
+In October 2025, IRSA began distributing SPHEREx Spectral Image data processed with substantially improved calibrations.
+This new processing, referred to as QR2, includes reprocessed versions of all Spectral Image data acquired since the start of the mission.
+Future quick releases will also use the QR2 pipeline.
+IRSA will continue to provide access to QR1 data for reference.
+However, QR2 supersedes QR1 and will be the default returned in the SPHEREx Data Explorer and by all IRSA program-friendly APIs.
+QR1 data will remain available only through browsable directory listings.
+
+A detailed description of SPHEREx quick release data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 Here we provide a concise summary of the science, calibration, and additional data products available at IRSA.
 This summary includes filenaming conventions, for which we adopt the following definitions:
 
@@ -30,6 +38,7 @@ Each Spectral MEF is approximately 70 MB and contains 6 extensions:
 HDU 1: IMAGE
  : Calibrated surface brightness flux density in units of MJy/sr, stored as a 2040 x 2040 image.
    No zodiacal light subtraction is applied.
+   
 
    The SPHEREx focal plane is split with a dichroic to three short-wavelength and three long-wavelength detector arrays.
    Two focal plane assemblies (FPAs) simultaneously image the sky through a dichroic beam splitter.
@@ -61,14 +70,16 @@ HDU 6: WCS-WAVE
  : Spectral World Coordinate System (WCS) FITS-compliant lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths.
    The lookup table consists of 1 row with 3 columns (X, Y, VALUES).
 
+
    X and Y are each arrays defining a grid of control points in spectral image pixel space.
 
-   VALUES is an array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth.
+
+VALUES is an array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth.
 
    :::{note}
-   This was originally adopted to support the unique nature of the SPHEREx LVF filters, this rarely-used part of the FITS standard has yet to be implemented by all readers.
+   Adopted to support the unique nature of the SPHEREx LVF filters, this rarely-used part of the FITS standard has yet to be implemented by all readers.
 
-   If your FITS client software doesn't automatically recognize this, you can manually determine the central wavelength or bandwidth at an arbitrary pixel location by identifying the four nearest control points and applying bilinear interpolation.
+   If your FITS client software doesn't automatically recognize this WCS-WAVE, you can manually determine the central wavelength or bandwidth at an arbitrary pixel location by identifying the four nearest control points and applying bilinear interpolation.
    This method yields values accurate to within approximately 1 nm.
    The information in the WCS-WAVE extension of the Spectral Image MEF is also provided in a stand-alone data product described below in [](#data-products-spectral-wcs).
    The fidelity of the WCS-WAVE lookup table is intended for visualization purposes.
@@ -85,8 +96,9 @@ HDU 6: WCS-WAVE
 
 ## Cutouts of Spectral Image MEFs
 
-IRSA enables users to access rectangular cutouts of a SPHEREx Spectral Image MEF by simply appending a [query string](https://irsa.ipac.caltech.edu/ibe/cutouts.html) containing center and size parameters to the image URL.
-These cutout MEFs contain the same HDUs as the original Spectral Images (IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE). However, the IMAGE, FLAGS, VARIANCE, AND ZODI HDUs have been modified to include only those pixels within the specified cutout size.
+IRSA's Cutout Service provides spatial subsets of the SPHEREx Spectral Image MEFs.
+Information on how to use the Cutout Service is provided in the [Data Access](https://caltech-ipac.github.io/spherex-archive-documentation/spherex-data-access#cutouts-of-spherex-spectral-image-mefs) section of this User Guide.
+The cutout MEFs returned from this service contain the same HDUs as the original Spectral Images (IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE). However, the IMAGE, FLAGS, VARIANCE, AND ZODI HDUs have been modified to include only those pixels within the specified cutout size.
 The WCS-WAVE HDU has also modified to provide the correct mapping between the pixels in the cutout to wavelength.
 The PSF HDU from the original spectral image is included unmodified in the cutout MEF.
 
