@@ -1,3 +1,4 @@
+(data-products)=
 # SPHEREx Data Products
 
 IRSA began releasing SPHEREx Spectral Image data on a weekly basis in July 2025 (Quick Release 1; QR1).
@@ -38,7 +39,7 @@ Each Spectral MEF is approximately 70 MB and contains 6 extensions:
 HDU 1: IMAGE
  : Calibrated surface brightness flux density in units of MJy/sr, stored as a 2040 x 2040 image.
    No zodiacal light subtraction is applied.
-   
+
 
    The SPHEREx focal plane is split with a dichroic to three short-wavelength and three long-wavelength detector arrays.
    Two focal plane assemblies (FPAs) simultaneously image the sky through a dichroic beam splitter.
@@ -241,6 +242,21 @@ Each extension is an image with dimensions 2040 × 2040 and units of electrons.
 *Example:*
 
 - `readnoise_pars_D1_spx_base-2025-158.fits`
+
+
+## Additional Product: Solid Angle Pixel Map
+
+The Solid Angle Pixel Map products are ~16 MB FITS image files (one per detector) with dimensions 2,040 x 2,040.
+Pixel values measure the solid angle in units of squared arcsec.
+
+*Filename Format:*
+
+- `solid_angle_pixel_map_D[Detector]_spx_cal-sapm-v[Version]-[Processing Date].fits`
+
+*Example:*
+
+- `solid_angle_pixel_map_D4_spx_cal-sapm-v2-2025-164.fits`
+
 
 (data-products-spectral-wcs)=
 ## Additional Product: Spectral WCS
