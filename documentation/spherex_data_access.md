@@ -36,10 +36,10 @@ The public data products are organized into subdirectories based on the followin
 * **Solid Angle Pixel Map:** `solid_angle_pixel_map/cal-sapm-v[Version]-[Processing Date]/`
 * **Spectral WCS:** `spectral_wcs/base-[Processing Date]/[Detector]/`
 
-The content of each subdirectory is described in greater detail in the Data Products section of this user guide and in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+The content of each subdirectory and the filename formats are described in greater detail in the {ref}`Data Products <data-products>` section of this user guide and in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 
 All of the data products listed above are also available on the cloud via AWS.
-Please see our [instructions for accesssing cloud-hosted SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/). 
+Please see our [instructions for accessing cloud-hosted SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/).
 
 ## Application Program Interfaces (APIs)
 
