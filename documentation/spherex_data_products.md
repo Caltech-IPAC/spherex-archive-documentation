@@ -95,17 +95,18 @@ VALUES is an array of two-element arrays: at each (X, Y) control point, the two-
 
 - `level2_2025W18_2B_0001_1D1_spx_l2b-v12-2025-164.fits`
 
+(products-spectral-image-cutouts)=
 ## Cutouts of Spectral Image MEFs
 
 IRSA's Cutout Service provides spatial subsets of the SPHEREx Spectral Image MEFs.
-Information on how to use the Cutout Service is provided in the [Data Access](https://caltech-ipac.github.io/spherex-archive-documentation/spherex-data-access#cutouts-of-spherex-spectral-image-mefs) section of this User Guide.
+Information on how to use the Cutout Service is provided in the {ref}`access-spectral-image-cutouts` section of this User Guide.
 The cutout MEFs returned from this service contain the same HDUs as the original Spectral Images (IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE). However, the IMAGE, FLAGS, VARIANCE, AND ZODI HDUs have been modified to include only those pixels within the specified cutout size.
 The WCS-WAVE HDU has also modified to provide the correct mapping between the pixels in the cutout to wavelength.
 The PSF HDU from the original spectral image is included unmodified in the cutout MEF.
 
 The spatially-varying PSF is represented as an image cube with 121 planes.
 Each plane is a 101x101 pixel image representing a PSF for a different region of the detector. Users interested in performing photometry on a cutout using the information in the cutout PSF HDU will need to understand how to find the most applicable PSF cube plane for each pixel in the cutout.
-The basic steps are described below, and a [Python notebook tutorial](https://caltech-ipac.github.io/irsa-tutorials/) is provided to help users get started with a simple implementation.
+The basic steps are described below, and a [Python notebook tutorial](https://caltech-ipac.github.io/irsa-tutorials/spherex-psf/) is provided to help users get started with a simple implementation.
 
 1. Determine the 0-based pixel coordinates of the position of interest in the IMAGE HDU of the cutout.
 
