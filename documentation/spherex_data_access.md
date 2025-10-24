@@ -1,3 +1,4 @@
+(data-access)=
 # SPHEREx Data Access
 
 IRSA serves SPHEREx data from two locations: (1) on premises at IPAC; and (2) on the cloud via Amazon Web Services (AWS).
@@ -36,10 +37,10 @@ The public data products are organized into subdirectories based on the followin
 * **Solid Angle Pixel Map:** `solid_angle_pixel_map/cal-sapm-v[Version]-[Processing Date]/`
 * **Spectral WCS:** `spectral_wcs/base-[Processing Date]/[Detector]/`
 
-The content of each subdirectory is described in greater detail in the Data Products section of this user guide and in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+The content of each subdirectory and the filename formats are described in greater detail in the {ref}`Data Products <data-products>` section of this user guide and in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 
 All of the data products listed above are also available on the cloud via AWS.
-Please see our [instructions for accesssing cloud-hosted SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/). 
+Please see our [instructions for accessing cloud-hosted SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/).
 
 ## Application Program Interfaces (APIs)
 
@@ -79,6 +80,7 @@ For example:
 
 See the section on Python packages to learn how to use Python wrappers around IRSA’s SIA2 service.
 
+(access-spectral-image-cutouts)=
 ### Cutouts of SPHEREx Spectral Image MEFs
 
 If you have identified the access URL for an on-premises Spectral Image MEF using SIA2 as described above, you can request a cutout of this MEF by appending a query string containing the center and size parameters. The parameters are described in more detail here:
@@ -92,7 +94,7 @@ If you have identified the access URL for an on-premises Spectral Image MEF usin
 This cutout service is also invoked by the SPHEREx Data Collection Explorer Spectral Image Search when users select the cutout option upon download.
 
 This cutout service can also be invoked via Python, as illustrated in the Python Tutorial notebook titled [Download a collection of SPHEREx Spectral Image cutouts as a multi-extension FITS file](https://caltech-ipac.github.io/irsa-tutorials/spherex-cutouts/).
-Information on how to work with the PSF extension in these cutouts is documented in the [Data Products section](https://caltech-ipac.github.io/spherex-archive-documentation/spherex-data-products#cutouts-of-spectral-image-mefs) of this User Guide and demonstrated in the Python Tutorial notebook titled [Understanding and Extracting the PSF Extension in a SPHEREx Cutout](https://caltech-ipac.github.io/irsa-tutorials/spherex-psf/).
+Information on how to work with the PSF extension in these cutouts is documented in the {ref}`products-spectral-image-cutouts` of this User Guide and demonstrated in the Python Tutorial notebook titled [Understanding and Extracting the PSF Extension in a SPHEREx Cutout](https://caltech-ipac.github.io/irsa-tutorials/spherex-psf/).
 
 ## Python packages: PyVO & Astroquery
 
