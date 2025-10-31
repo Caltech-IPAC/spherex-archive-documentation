@@ -14,17 +14,13 @@ Here we provide a concise summary of the science, calibration, and additional da
 This summary includes filenaming conventions, for which we adopt the following definitions:
 
 - `Planning Period` designates the survey plan uploaded to the spacecraft, e.g. `2025W18_2B`.
-Each planning period covers approximately 3.5 days of operation.
-
+  Each planning period covers approximately 3.5 days of operation.
 - `Observation ID` includes the survey planning period and the large and small slew counters.
-For example, `2025W18_2B_0001_1` contains the planning period (`2025W18_2B`), the large slew counter (`0001`), and the small slew counter (`1`).
-Each large slew has a maximum of 4 small slews, so the allowed small slew counter range is 1 to 4.
-Some large slews will have fewer than 4 small slews.
-
+  For example, `2025W18_2B_0001_1` contains the planning period (`2025W18_2B`), the large slew counter (`0001`), and the small slew counter (`1`).
+  Each large slew has a maximum of 4 small slews, so the allowed small slew counter range is 1 to 4.
+  Some large slews will have fewer than 4 small slews.
 - `Detector` is an integer from 1 through 6.
-
 - `Version` is the version of this file, e.g. 'l2' for "level 2" data products.
-
 - `Processing Date` includes the year and the number of days into the year, e.g. `2025-164`.
 
 ## Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
@@ -71,8 +67,7 @@ HDU 6: WCS-WAVE
 
    X and Y are each arrays defining a grid of control points in spectral image pixel space.
 
-
-VALUES is an array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth.
+   VALUES is an array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth.
 
    :::{note}
    Adopted to support the unique nature of the SPHEREx LVF filters, this rarely-used part of the FITS standard has yet to be implemented by all readers.

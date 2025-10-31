@@ -6,13 +6,13 @@ IRSA provides layered access to these data to support a variety of use cases and
 These layers include:
 
 * **Browsable Directories:** SPHEREx on-premises data products are laid out in directories that can be navigated with standard web browsers.
-These data products are mirrored on AWS.
+  These data products are mirrored on AWS.
 * **Application Program Interfaces:** IRSA provides program-friendly Application Program Interfaces (APIs) to access SPHEREx Spectral Image data.
-The on-prem and cloud-hosted Quick Release 2 Spectral Images that have been released thus far are accessible via the [Simple Image Access V2 protocol](https://ivoa.net/documents/SIA/20151223/) defined by the International Virtual Observatory Alliance ([IVOA](https://ivoa.net)).
-Cutouts of the Spectral Image data held on-prem are available via IRSA's Cutout Service.
+  The on-prem and cloud-hosted Quick Release 2 Spectral Images that have been released thus far are accessible via the [Simple Image Access V2 protocol](https://ivoa.net/documents/SIA/20151223/) defined by the International Virtual Observatory Alliance ([IVOA](https://ivoa.net)).
+  Cutouts of the Spectral Image data held on-prem are available via IRSA's Cutout Service.
 * **Python Packages:** SPHEREx data at IRSA are accessible via the Python packages [pyvo](https://pyvo.readthedocs.io/en/latest/) and [astroquery](https://astroquery.readthedocs.io/en/latest/ipac/irsa/irsa.html).
 * **SPHEREx Data Explorer:** IRSA provides a web-based Graphical User Interface (GUI) that makes it easy to search for, visualize, and download SPHEREx data.
-This tool provides access to the on-prem copy of the data.
+  This tool provides access to the on-prem copy of the data.
 
 Each of these data access layers is described in greater detail in the subsections below.
 
