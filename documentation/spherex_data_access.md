@@ -54,7 +54,8 @@ The content of each subdirectory and the filename formats are described in great
 IRSA provides API access to SPHEREx Spectral Image Multi-Extension FITS files (MEFs) and associated calibration files through [version 2 of the VO Simple Image Access (SIA2) protocol](https://ivoa.net/documents/SIA/20151223/).
 SIA2 allows users to query for a list of images that satisfy constraints based on position(s) on the sky, band, time, ID, and instrument.
 The list returned by the service includes a data access URL for each image.
-These can be used to retrieve the on-prem-hosted images using `wget` or `curl`. The returned list also returns cloud access information.
+These can be used to retrieve the on-prem-hosted images using `wget` or `curl`.
+The returned list also returns cloud access information.
 A brief summary of SIA2 for accessing SPHEREx data for IRSA is given below.
 Additional [documentation on IRSA’s SIA2 service](https://irsa.ipac.caltech.edu/ibe/sia.html) can be found on the IRSA website.
 
@@ -110,7 +111,8 @@ If you would like to take advantage of IRSA’s SIA2 service for querying SPHERE
 [Astroquery](https://github.com/astropy/astroquery)
  : This module provides access to IRSA's public astrophysics data from projects such as SPHEREx, Euclid, Spitzer, WISE/NEOWISE, SOFIA, IRTF, 2MASS, Herschel, IRAS, and ZTF.
 
-Examples of data queries using both of these libraries can be found in [IRSA’s Python Notebook Tutorial Repository](https://caltech-ipac.github.io/irsa-tutorials/). For example:
+Examples of data queries using both of these libraries can be found in [IRSA’s Python Notebook Tutorial Repository](https://caltech-ipac.github.io/irsa-tutorials/).
+For example:
 
 The notebook titled [Introduction to SPHEREx Spectral Images](https://caltech-ipac.github.io/irsa-tutorials/spherex-intro/) shows how to use the Astroquery library to execute an IVOA Simple Image Access (SIA2) query for SPHEREx spectral images that cover the specified coordinates and collection.
 
