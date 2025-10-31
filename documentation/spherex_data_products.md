@@ -5,7 +5,7 @@ IRSA began releasing SPHEREx Spectral Image data on a weekly basis in July 2025 
 In October 2025, IRSA began distributing SPHEREx Spectral Image data processed with substantially improved calibrations.
 This new processing, referred to as QR2, includes reprocessed versions of all Spectral Image data acquired since the start of the mission.
 Future quick releases will also use the QR2 pipeline.
-IRSA will continue to provide access to QR1 data for reference.
+IRSA will continue to provide access to QR1 data through January 2026 for reference.
 However, QR2 supersedes QR1 and will be the default returned in the SPHEREx Data Explorer and by all IRSA program-friendly APIs.
 QR1 data will remain available only through browsable directory listings.
 
@@ -30,7 +30,7 @@ Some large slews will have fewer than 4 small slews.
 
 ## Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
 
-The main Quick Release data product is the Level 2 Spectral Image MEF,as described in Section 2.1 of the [Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+The main Quick Release data product is the Level 2 Spectral Image MEF, as described in Section 2.1 of the [Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 
 There are 6 Spectral MEFs (one for each detector) for each sky pointing.
 Because data quality assessments are evaluated per spectral image band, some observations will not include all 6 bands in the archive.
@@ -89,7 +89,7 @@ VALUES is an array of two-element arrays: at each (X, Y) control point, the two-
 
 *Filename Format:*
 
-- `level2_[Observation ID]_D[Detector]_spx_l2b_v[Version]_[Processing Date].fits`
+- `level2_[Observation ID]D[Detector]_spx_l2b_v[Version]_[Processing Date].fits`
 
 *Example:*
 
@@ -112,10 +112,10 @@ The basic steps are described below, and a [Python notebook tutorial](https://ca
 
 2. Determine the 0-based pixel coordinates of the position of interest in the IMAGE HDU of the original Spectral Image.
 
-```
-xpix_orig = 1 + xpix_cutout - CRPIX1A
-ypix_orig = 1 + ypix_cutout - CRPIX2A
-```
+   ```
+   xpix_orig = 1 + xpix_cutout - CRPIX1A
+   ypix_orig = 1 + ypix_cutout - CRPIX2A
+   ```
 
 3. Examine the header of the PSF HDU of the cutout to determine the PSF zone and cube plane corresponding to the pixel of interest in the original Spectral Image.
 
@@ -277,8 +277,10 @@ This is equivalent to the WCS-WAVE extension in the Spectral Image MEF file desc
 
 
 *Filename Format:*
-- `spectral_wcs_D[Detector]_spx_base-[Processing Date].fits`
+- QR2: `spectral_wcs_D[Detector]_spx_cal-wcs-v[Version]-[Processing Date].fits`
+- QR1: `spectral_wcs_D[Detector]_spx_base-[Processing Date].fits`
 
 *Example:*
 
-- `rspectral_wcs_D1_spx_base-2025-158.fits`
+- QR2: `spectral_wcs_D1_spx_cal-wcs-v4-2025-254.fits`
+- QR1: `spectral_wcs_D1_spx_base-2025-158.fits`

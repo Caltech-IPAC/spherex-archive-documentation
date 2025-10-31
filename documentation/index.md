@@ -10,6 +10,8 @@ This User Guide will evolve as the SPHEREx project delivers new data products an
 
 SPHEREx is a NASA Astrophysics Medium Explorer mission that launched in March 2025.
 During its planned two-year mission, SPHEREx will obtain 0.75-5 micron spectroscopy over the entire sky, with deeper data in the SPHEREx Deep Fields.
+IRSA began releasing SPHEREx Quick Release 2 (QR2) data on a weekly basis in October 2025.
+QR2 features substantially improved calibrations and supersedes QR1.
 SPHEREx data will be used to:
 
 * **constrain the physics of inflation** by measuring its imprints on the three-dimensional large-scale distribution of matter,

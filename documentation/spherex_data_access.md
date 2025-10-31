@@ -8,7 +8,7 @@ These layers include:
 * **Browsable Directories:** SPHEREx on-premises data products are laid out in directories that can be navigated with standard web browsers.
 These data products are mirrored on AWS.
 * **Application Program Interfaces:** IRSA provides program-friendly Application Program Interfaces (APIs) to access SPHEREx Spectral Image data.
-The on-prem and cloud-hosted Quick Release Spectral Images that have been released thus far are accessible via the [Simple Image Access V2 protocol](https://ivoa.net/documents/SIA/20151223/) defined by the International Virtual Observatory Alliance ([IVOA](https://ivoa.net)).
+The on-prem and cloud-hosted Quick Release 2 Spectral Images that have been released thus far are accessible via the [Simple Image Access V2 protocol](https://ivoa.net/documents/SIA/20151223/) defined by the International Virtual Observatory Alliance ([IVOA](https://ivoa.net)).
 Cutouts of the Spectral Image data held on-prem are available via IRSA's Cutout Service.
 * **Python Packages:** SPHEREx data at IRSA are accessible via the Python packages [pyvo](https://pyvo.readthedocs.io/en/latest/) and [astroquery](https://astroquery.readthedocs.io/en/latest/ipac/irsa/irsa.html).
 * **SPHEREx Data Explorer:** IRSA provides a web-based Graphical User Interface (GUI) that makes it easy to search for, visualize, and download SPHEREx data.
@@ -18,13 +18,17 @@ Each of these data access layers is described in greater detail in the subsectio
 
 ## Browsable Directories
 
-SPHEREx on-prem data products are laid out in directories that can be navigated with standard web browsers.
+SPHEREx data products are laid out in directories that can be navigated with standard web browsers.
 This is convenient for users to get a quick sense of the types of data products that are available, to quickly download some examples by clicking through the directory tree, and to script bulk downloads using `wget` or `curl`.
 
-The root of the SPHEREx data quick release data directories is:
-https://irsa.ipac.caltech.edu/ibe/data/spherex/qr
+The root of the SPHEREx QR2 on-premises data directories is: [https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2](https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2).
+For QR1, replace '/qr2' with '/qr'.
+Note that QR1 is superseded by QR2 and only available through January 2026.
+All of the data products are also available on the cloud via AWS.
+Please see our [instructions for accessing cloud-hosted SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/#spherex).
 
 The public data products are organized into subdirectories based on the following organizational scheme:
+
 * **Absolute Gain Matrix:** `abs_gain_matrix/cal-agm-v[Version]-[Processing Date]/[Detector]/`
 * **Exposure-Averaged Point Spread Functions (PSFs):** `average_psf/cal-psf-v[Version]-[Processing Date]/[Detector]/`
 * **Dark Current:** `dark/cal-drk-v[Version]-[Processing Date]/[Detector]/`
@@ -34,13 +38,10 @@ The public data products are organized into subdirectories based on the followin
 * **Nonfunctional Pixels:** `nonfunc/base-[Processing Date]/[Detector]/`
 * **Nonlinearity Parameters:** `nonlinear_pars/base-[Processing Date]/[Detector]/`
 * **Read Noise Parameters:** `readnoise_pars/base-[Processing Date]/[Detector]/`
-* **Solid Angle Pixel Map:** `solid_angle_pixel_map/cal-sapm-v[Version]-[Processing Date]/`
-* **Spectral WCS:** `spectral_wcs/base-[Processing Date]/[Detector]/`
+* **Solid Angle Pixel Map:** `solid_angle_pixel_map/cal-sapm-v[Version]-[Processing Date]/[Detector]/`
+* **Spectral WCS:** `spectral_wcs/cal-wcs-v[Version]-[Processing Date]/[Detector]/` (QR2) or `spectral_wcs/base-[Processing Date]/[Detector]/` (QR1)
 
 The content of each subdirectory and the filename formats are described in greater detail in the {ref}`Data Products <data-products>` section of this user guide and in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
-
-All of the data products listed above are also available on the cloud via AWS.
-Please see our [instructions for accessing cloud-hosted SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/).
 
 ## Application Program Interfaces (APIs)
 
@@ -55,8 +56,8 @@ Additional [documentation on IRSA’s SIA2 service](https://irsa.ipac.caltech.ed
 
 :::{note}
 SPHEREx data are ingested on a weekly basis.
-Due to the nature of the ingestion process, new SPHEREx data will first be available in the browsable directories and in the SPHEREx Data Explorer GUI.
-Availability via SIA2 and Python libraries like Astroquery and PyVO will lag on the order of a day.
+Due to the nature of the ingestion process, new SPHEREx data will first be available in the browsable directories, the SPHEREx Data Explorer GUI, and certain TAP queries (see the [cutouts notebook](https://caltech-ipac.github.io/irsa-tutorials/spherex-cutouts/) for a TAP example).
+Availability via SIA2 will lag on the order of a day.
 :::
 
 IRSA's generic SIA2 endpoint is:
@@ -66,30 +67,29 @@ IRSA's generic SIA2 endpoint is:
 Users must add a `COLLECTION` parameter to this endpoint to specify which dataset to search.
 There are three SPHEREx-related SIA2 collections:
 
-* SPHEREx Quick Release Spectral Image MEFs that are part of the SPHEREx **Wide Survey** can be accessed with: `COLLECTION=spherex_qr`.
-Use this collection if you are interested in more uniform coverage across the entire sky and want to ignore the additional coverage in the deep fields.
+* SPHEREx QR2 Spectral Image MEFs that are part of the SPHEREx **Wide Survey** can be accessed with: `COLLECTION=spherex_qr2`.
+  Use this collection if you are interested in more uniform coverage across the entire sky and want to ignore the additional coverage in the deep fields.
 
-* SPHEREx Quick Release Spectral Image MEFs that are part of the SPHEREx **Deep Survey** can be accessed with: `COLLECTION=spherex_qr_deep`.
+* SPHEREx QR2 Spectral Image MEFs that are part of the SPHEREx **Deep Survey** can be accessed with: `COLLECTION=spherex_qr2_deep`.
 
-* SPHEREx Quick Release **Calibration files** can be accessed with: `COLLECTION=spherex_qr_cal`.
+* SPHEREx QR2 **Calibration files** can be accessed with: `COLLECTION=spherex_qr2_cal`.
 
 You can use `wget` or `curl` to submit SIA2 queries from the command line.
 For example:
 
-* `wget -O example1.html "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
+* `wget -O example1.html "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr2&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
 
 See the section on Python packages to learn how to use Python wrappers around IRSA’s SIA2 service.
 
 (access-spectral-image-cutouts)=
 ### Cutouts of SPHEREx Spectral Image MEFs
 
-If you have identified the access URL for an on-premises Spectral Image MEF using SIA2 as described above, you can request a cutout of this MEF by appending a query string containing the center and size parameters. The parameters are described in more detail here:
-
-`https://irsa.ipac.caltech.edu/ibe/cutouts.html`
+If you have identified the access URL for an on-premises Spectral Image MEF using SIA2 as described above, you can request a cutout of this MEF by appending a query string containing the center and size parameters.
+The parameters are described in more detail at [https://irsa.ipac.caltech.edu/ibe/cutouts.html](https://irsa.ipac.caltech.edu/ibe/cutouts.html).
 
 **Example:**
 
-`curl -o cutout.fits "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr/level2/2025W19_2B/l2b-v11-2025-163/3/level2_2025W19_2B_0073_2D3_spx_l2b-v11-2025-163.fits?center=156.09328159,-41.64466331&size=0.1"`
+`curl -o cutout.fits "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W19_2B/l2b-v20-2025-247/3/level2_2025W19_2B_0073_2D3_spx_l2b-v20-2025-247.fits?center=156.09328159,-41.64466331&size=0.1"`
 
 This cutout service is also invoked by the SPHEREx Data Collection Explorer Spectral Image Search when users select the cutout option upon download.
 
@@ -112,11 +112,10 @@ The notebook titled [Introduction to SPHEREx Spectral Images](https://caltech-ip
 
 The notebook titled [Download a collection of SPHEREx Spectral Image cutouts as a multi-extension FITS file](https://caltech-ipac.github.io/irsa-tutorials/spherex-cutouts/#id-5-query-irsa-for-a-list-of-cutouts-that-satisfy-the-criteria-specified-above) demonstrates how to use the PyVO library to execute an IVOA Table Access Protocol (TAP) query for SPHEREx spectral images that cover the specified coordinates and match the specified bandpass.
 
-
 :::{note}
 SPHEREx data are ingested on a weekly basis.
-Due to the nature of the ingestion process, new SPHEREx data will first be available in the browsable directories and in the SPHEREx Data Explorer GUI.
-Availability via SIA2 and Python libraries like Astroquery and PyVO will lag on the order of a day.
+Due to the nature of the ingestion process, new SPHEREx data will first be available in the browsable directories, the SPHEREx Data Explorer GUI, and certain TAP queries (see the [cutouts notebook](https://caltech-ipac.github.io/irsa-tutorials/spherex-cutouts/) for a TAP example).
+Availability via SIA2 will lag on the order of a day.
 :::
 
 ## SPHEREx Data Explorer Web Application
