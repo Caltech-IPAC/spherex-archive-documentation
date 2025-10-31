@@ -27,7 +27,6 @@ Some large slews will have fewer than 4 small slews.
 
 - `Processing Date` includes the year and the number of days into the year, e.g. `2025-164`.
 
-
 ## Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
 
 The main Quick Release data product is the Level 2 Spectral Image MEF, as described in Section 2.1 of the [Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
@@ -39,7 +38,6 @@ Each Spectral MEF is approximately 70 MB and contains 6 extensions:
 HDU 1: IMAGE
  : Calibrated surface brightness flux density in units of MJy/sr, stored as a 2040 x 2040 image.
    No zodiacal light subtraction is applied.
-
 
    The SPHEREx focal plane is split with a dichroic to three short-wavelength and three long-wavelength detector arrays.
    Two focal plane assemblies (FPAs) simultaneously image the sky through a dichroic beam splitter.
@@ -70,7 +68,6 @@ HDU 5: PSF
 HDU 6: WCS-WAVE
  : Spectral World Coordinate System (WCS) FITS-compliant lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths.
    The lookup table consists of 1 row with 3 columns (X, Y, VALUES).
-
 
    X and Y are each arrays defining a grid of control points in spectral image pixel space.
 
@@ -126,7 +123,6 @@ To determine if a pixel in the original Spectral Image falls within a PSF zone, 
 
 The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector) with dimensions 2,040 × 2,040 and units of (MJy/sr) / (e−/s).
 
-
 *Filename Format:*
 
 - `abs_gain_matrix_D[Detector]_spx_cal-agm-v[Version]-[Processing Date].fits`
@@ -135,14 +131,12 @@ The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector)
 
 - `abs_gain_matrix_D1_spx_cal-agm-v4-2025-161.fits`
 
-
 ## Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
 
 The Exposure-Averaged Point Spread Functions (PSFs) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121.
 Each of the 121 layers represents a "super-resolution" PSF estimate in a different region (defined by an 11x11 grid) of the detector.
 Each PSF is a two-dimensional array with size of 101 × 101 pixels.
 The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent as one spectral image pixel (0.615 arcsec).
-
 
 *Filename Format:*
 
@@ -152,11 +146,9 @@ The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent a
 
 - `average_psf_D1_spx_cal-psf-v4-2025-161.fits`
 
-
 ## Calibration Product: Dark Current
 
 The Dark Current products are ~16 MB FITS image files (one per detector) with dimensions 2,040 x 2,040 and units of electron/s.
-
 
 *Filename Format:*
 
@@ -166,14 +158,12 @@ The Dark Current products are ~16 MB FITS image files (one per detector) with di
 
 - `dark_D1_spx_cal-drk-v4-2025-161.fits`
 
-
 ## Calibration Product: Dichroic
 
 The Dichroic products are ~16 MB FITS image files with dimensions 2,040 x 2,040.
 The pixel value is 0 for pixels that are unaffected by flux attenuation due to the dicroic filter and 1 for impacted pixels.
 A pixel is considered impacted if the flux attenuation is 50% or higher.
 Note that only bands 3 and 4 have any non-zero values.
-
 
 *Filename Format:*
 
@@ -183,11 +173,9 @@ Note that only bands 3 and 4 have any non-zero values.
 
 - `dichroic_D1_spx_base-2025-158.fits`
 
-
 ## Calibration Product: Electronic Gain Factors
 
 The Electronic Gain Factor product is a single YAML file that includes the provenance information for the detectors and a list of 32 gain values per detector.
-
 
 *Filename Format:*
 
@@ -197,12 +185,10 @@ The Electronic Gain Factor product is a single YAML file that includes the prove
 
 - `gain_factors_spx_base-2025-158.yaml`
 
-
 ## Additional Product: Nonfunctional Pixels
 
 The Nonfunctional Pixel products are ~32 MB FITS image files (one per detector) with dimensions 2,040 x 2,040.
 Pixel values are 1 for pixels known to be permanently non-functioning and 0 otherwise.
-
 
 *Filename Format:*
 
@@ -212,13 +198,11 @@ Pixel values are 1 for pixels known to be permanently non-functioning and 0 othe
 
 - `nonfunc_D1_spx_base-2025-158.fits`
 
-
 ## Additional Product: Nonlinearity Parameters
 
 The Nonlinearity Parameter products are ~79 MB multi-extension FITS files (one per detector).
 Each file contains 5 extensions (Q_nl, b1, b2, b3, Qmax), each of which is an image with dimensions 2,040 x 2,040.
 These extensions are described in Section 3.2.1 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
-
 
 *Filename Format:*
 
@@ -228,13 +212,11 @@ These extensions are described in Section 3.2.1 of the [SPHEREx Explanatory Supp
 
 - `nonlinear_pars_D1_spx_base-2025-158.fits`
 
-
 ## Additional Product: Read Noise Parameters
 
 The Read Noise Parameters products are ~48 MB multi-extension FITS files (one per detector).
 Each file has 2 extensions: READNOISE-1 and READNOISE-2.
 Each extension is an image with dimensions 2040 × 2040 and units of electrons.
-
 
 *Filename Format:*
 
@@ -243,7 +225,6 @@ Each extension is an image with dimensions 2040 × 2040 and units of electrons.
 *Example:*
 
 - `readnoise_pars_D1_spx_base-2025-158.fits`
-
 
 ## Additional Product: Solid Angle Pixel Map
 
@@ -257,7 +238,6 @@ Pixel values measure the solid angle in units of squared arcsec.
 *Example:*
 
 - `solid_angle_pixel_map_D4_spx_cal-sapm-v2-2025-164.fits`
-
 
 (data-products-spectral-wcs)=
 ## Additional Product: Spectral WCS
@@ -275,8 +255,8 @@ It contains the bandwidth in microns for each pixel.
 WCS-WAVE is a table with 3 columns (X, Y, VALUES) and 1 row.
 This is equivalent to the WCS-WAVE extension in the Spectral Image MEF file described above.
 
-
 *Filename Format:*
+
 - QR2: `spectral_wcs_D[Detector]_spx_cal-wcs-v[Version]-[Processing Date].fits`
 - QR1: `spectral_wcs_D[Detector]_spx_base-[Processing Date].fits`
 
