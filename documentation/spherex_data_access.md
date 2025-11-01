@@ -23,9 +23,13 @@ This is convenient for users to get a quick sense of the types of data products 
 
 The root of the SPHEREx QR2 on-premises data directories is: [https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2](https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2).
 For QR1, replace '/qr2' with '/qr'.
-Note that QR1 is superseded by QR2 and only available through January 2026.
 All of the data products are also available on the cloud via AWS.
-Please see our [instructions for accessing cloud-hosted SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/#spherex).
+Please see our [instructions for accessing on-cloud SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/#spherex).
+
+:::{note}
+QR1 is superseded by QR2.
+The QR1 files will be available through January 2026 for reference.
+:::
 
 The public data products are organized into subdirectories based on the following organizational scheme:
 
