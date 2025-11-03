@@ -14,19 +14,14 @@ Here we provide a concise summary of the science, calibration, and additional da
 This summary includes filenaming conventions, for which we adopt the following definitions:
 
 - `Planning Period` designates the survey plan uploaded to the spacecraft, e.g. `2025W18_2B`.
-Each planning period covers approximately 3.5 days of operation.
-
+  Each planning period covers approximately 3.5 days of operation.
 - `Observation ID` includes the survey planning period and the large and small slew counters.
-For example, `2025W18_2B_0001_1` contains the planning period (`2025W18_2B`), the large slew counter (`0001`), and the small slew counter (`1`).
-Each large slew has a maximum of 4 small slews, so the allowed small slew counter range is 1 to 4.
-Some large slews will have fewer than 4 small slews.
-
+  For example, `2025W18_2B_0001_1` contains the planning period (`2025W18_2B`), the large slew counter (`0001`), and the small slew counter (`1`).
+  Each large slew has a maximum of 4 small slews, so the allowed small slew counter range is 1 to 4.
+  Some large slews will have fewer than 4 small slews.
 - `Detector` is an integer from 1 through 6.
-
 - `Version` is the version of this file, e.g. 'l2' for "level 2" data products.
-
 - `Processing Date` includes the year and the number of days into the year, e.g. `2025-164`.
-
 
 ## Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
 
@@ -39,7 +34,6 @@ Each Spectral MEF is approximately 70 MB and contains 6 extensions:
 HDU 1: IMAGE
  : Calibrated surface brightness flux density in units of MJy/sr, stored as a 2040 x 2040 image.
    No zodiacal light subtraction is applied.
-
 
    The SPHEREx focal plane is split with a dichroic to three short-wavelength and three long-wavelength detector arrays.
    Two focal plane assemblies (FPAs) simultaneously image the sky through a dichroic beam splitter.
@@ -71,11 +65,9 @@ HDU 6: WCS-WAVE
  : Spectral World Coordinate System (WCS) FITS-compliant lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths.
    The lookup table consists of 1 row with 3 columns (X, Y, VALUES).
 
-
    X and Y are each arrays defining a grid of control points in spectral image pixel space.
 
-
-VALUES is an array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth.
+   VALUES is an array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth.
 
    :::{note}
    Adopted to support the unique nature of the SPHEREx LVF filters, this rarely-used part of the FITS standard has yet to be implemented by all readers.
@@ -100,12 +92,14 @@ VALUES is an array of two-element arrays: at each (X, Y) control point, the two-
 
 IRSA's Cutout Service provides spatial subsets of the SPHEREx Spectral Image MEFs.
 Information on how to use the Cutout Service is provided in the {ref}`access-spectral-image-cutouts` section of this User Guide.
-The cutout MEFs returned from this service contain the same HDUs as the original Spectral Images (IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE). However, the IMAGE, FLAGS, VARIANCE, AND ZODI HDUs have been modified to include only those pixels within the specified cutout size.
+The cutout MEFs returned from this service contain the same HDUs as the original Spectral Images (IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE).
+However, the IMAGE, FLAGS, VARIANCE, AND ZODI HDUs have been modified to include only those pixels within the specified cutout size.
 The WCS-WAVE HDU has also modified to provide the correct mapping between the pixels in the cutout to wavelength.
 The PSF HDU from the original spectral image is included unmodified in the cutout MEF.
 
 The spatially-varying PSF is represented as an image cube with 121 planes.
-Each plane is a 101x101 pixel image representing a PSF for a different region of the detector. Users interested in performing photometry on a cutout using the information in the cutout PSF HDU will need to understand how to find the most applicable PSF cube plane for each pixel in the cutout.
+Each plane is a 101x101 pixel image representing a PSF for a different region of the detector.
+Users interested in performing photometry on a cutout using the information in the cutout PSF HDU will need to understand how to find the most applicable PSF cube plane for each pixel in the cutout.
 The basic steps are described below, and a [Python notebook tutorial](https://caltech-ipac.github.io/irsa-tutorials/spherex-psf/) is provided to help users get started with a simple implementation.
 
 1. Determine the 0-based pixel coordinates of the position of interest in the IMAGE HDU of the cutout.
@@ -126,7 +120,6 @@ To determine if a pixel in the original Spectral Image falls within a PSF zone, 
 
 The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector) with dimensions 2,040 × 2,040 and units of (MJy/sr) / (e−/s).
 
-
 *Filename Format:*
 
 - `abs_gain_matrix_D[Detector]_spx_cal-agm-v[Version]-[Processing Date].fits`
@@ -135,14 +128,12 @@ The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector)
 
 - `abs_gain_matrix_D1_spx_cal-agm-v4-2025-161.fits`
 
-
 ## Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
 
 The Exposure-Averaged Point Spread Functions (PSFs) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121.
 Each of the 121 layers represents a "super-resolution" PSF estimate in a different region (defined by an 11x11 grid) of the detector.
 Each PSF is a two-dimensional array with size of 101 × 101 pixels.
 The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent as one spectral image pixel (0.615 arcsec).
-
 
 *Filename Format:*
 
@@ -152,11 +143,9 @@ The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent a
 
 - `average_psf_D1_spx_cal-psf-v4-2025-161.fits`
 
-
 ## Calibration Product: Dark Current
 
 The Dark Current products are ~16 MB FITS image files (one per detector) with dimensions 2,040 x 2,040 and units of electron/s.
-
 
 *Filename Format:*
 
@@ -166,14 +155,12 @@ The Dark Current products are ~16 MB FITS image files (one per detector) with di
 
 - `dark_D1_spx_cal-drk-v4-2025-161.fits`
 
-
 ## Calibration Product: Dichroic
 
 The Dichroic products are ~16 MB FITS image files with dimensions 2,040 x 2,040.
 The pixel value is 0 for pixels that are unaffected by flux attenuation due to the dicroic filter and 1 for impacted pixels.
 A pixel is considered impacted if the flux attenuation is 50% or higher.
 Note that only bands 3 and 4 have any non-zero values.
-
 
 *Filename Format:*
 
@@ -183,11 +170,9 @@ Note that only bands 3 and 4 have any non-zero values.
 
 - `dichroic_D1_spx_base-2025-158.fits`
 
-
 ## Calibration Product: Electronic Gain Factors
 
 The Electronic Gain Factor product is a single YAML file that includes the provenance information for the detectors and a list of 32 gain values per detector.
-
 
 *Filename Format:*
 
@@ -197,12 +182,10 @@ The Electronic Gain Factor product is a single YAML file that includes the prove
 
 - `gain_factors_spx_base-2025-158.yaml`
 
-
 ## Additional Product: Nonfunctional Pixels
 
 The Nonfunctional Pixel products are ~32 MB FITS image files (one per detector) with dimensions 2,040 x 2,040.
 Pixel values are 1 for pixels known to be permanently non-functioning and 0 otherwise.
-
 
 *Filename Format:*
 
@@ -212,13 +195,11 @@ Pixel values are 1 for pixels known to be permanently non-functioning and 0 othe
 
 - `nonfunc_D1_spx_base-2025-158.fits`
 
-
 ## Additional Product: Nonlinearity Parameters
 
 The Nonlinearity Parameter products are ~79 MB multi-extension FITS files (one per detector).
 Each file contains 5 extensions (Q_nl, b1, b2, b3, Qmax), each of which is an image with dimensions 2,040 x 2,040.
 These extensions are described in Section 3.2.1 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
-
 
 *Filename Format:*
 
@@ -228,13 +209,11 @@ These extensions are described in Section 3.2.1 of the [SPHEREx Explanatory Supp
 
 - `nonlinear_pars_D1_spx_base-2025-158.fits`
 
-
 ## Additional Product: Read Noise Parameters
 
 The Read Noise Parameters products are ~48 MB multi-extension FITS files (one per detector).
 Each file has 2 extensions: READNOISE-1 and READNOISE-2.
 Each extension is an image with dimensions 2040 × 2040 and units of electrons.
-
 
 *Filename Format:*
 
@@ -243,7 +222,6 @@ Each extension is an image with dimensions 2040 × 2040 and units of electrons.
 *Example:*
 
 - `readnoise_pars_D1_spx_base-2025-158.fits`
-
 
 ## Additional Product: Solid Angle Pixel Map
 
@@ -257,7 +235,6 @@ Pixel values measure the solid angle in units of squared arcsec.
 *Example:*
 
 - `solid_angle_pixel_map_D4_spx_cal-sapm-v2-2025-164.fits`
-
 
 (data-products-spectral-wcs)=
 ## Additional Product: Spectral WCS
@@ -275,8 +252,8 @@ It contains the bandwidth in microns for each pixel.
 WCS-WAVE is a table with 3 columns (X, Y, VALUES) and 1 row.
 This is equivalent to the WCS-WAVE extension in the Spectral Image MEF file described above.
 
-
 *Filename Format:*
+
 - QR2: `spectral_wcs_D[Detector]_spx_cal-wcs-v[Version]-[Processing Date].fits`
 - QR1: `spectral_wcs_D[Detector]_spx_base-[Processing Date].fits`
 

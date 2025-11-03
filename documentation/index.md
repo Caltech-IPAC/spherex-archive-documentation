@@ -1,7 +1,7 @@
 # SPHEREx Archive at IRSA User Guide
 
-
 ## Document Purpose and Scope
+
 The purpose of this document is to facilitate science with SPHEREx data by providing users with an overview of the SPHEREx data that are available at the NASA/IPAC Infrared Science Archive (IRSA) at Caltech, as well as instructions for accessing and downloading these data.
 We also provide tips for exploring the data and getting help with any questions you may have.
 This User Guide will evolve as the SPHEREx project delivers new data products and tools to IRSA to make available to the public.
@@ -21,7 +21,6 @@ SPHEREx data will be used to:
 The community will also mine SPHEREx data and combine it with synergistic data sets to address a variety of additional topics in astrophysics.
 
 More information is available in the "Mission Overview" section of the SPHEREx Explanatory Supplement.
-
 
 ## Additional Resources
 
