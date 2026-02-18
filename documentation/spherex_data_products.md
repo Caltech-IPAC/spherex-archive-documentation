@@ -3,11 +3,8 @@
 
 IRSA began releasing SPHEREx Spectral Image data on a weekly basis in July 2025 (Quick Release 1; QR1).
 In October 2025, IRSA began distributing SPHEREx Spectral Image data processed with substantially improved calibrations.
-This new processing, referred to as QR2, includes reprocessed versions of all Spectral Image data acquired since the start of the mission.
+This new processing, referred to as QR2, supersedes QR1 and includes reprocessed versions of all Spectral Image data acquired since the start of the mission.
 Future quick releases will also use the QR2 pipeline.
-IRSA will continue to provide access to QR1 data through January 2026 for reference.
-However, QR2 supersedes QR1 and will be the default returned in the SPHEREx Data Explorer and by all IRSA program-friendly APIs.
-QR1 data will remain available only through browsable directory listings.
 
 A detailed description of SPHEREx quick release data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 Here we provide a concise summary of the science, calibration, and additional data products available at IRSA.
@@ -254,10 +251,8 @@ This is equivalent to the WCS-WAVE extension in the Spectral Image MEF file desc
 
 *Filename Format:*
 
-- QR2: `spectral_wcs_D[Detector]_spx_cal-wcs-v[Version]-[Processing Date].fits`
-- QR1: `spectral_wcs_D[Detector]_spx_base-[Processing Date].fits`
+- `spectral_wcs_D[Detector]_spx_cal-wcs-v[Version]-[Processing Date].fits`
 
 *Example:*
 
-- QR2: `spectral_wcs_D1_spx_cal-wcs-v4-2025-254.fits`
-- QR1: `spectral_wcs_D1_spx_base-2025-158.fits`
+- `spectral_wcs_D1_spx_cal-wcs-v4-2025-254.fits`
