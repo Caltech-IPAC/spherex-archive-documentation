@@ -8,7 +8,9 @@ project:
   # keywords: []
   authors: [Caltech/IPAC-IRSA]
   github: https://github.com/Caltech-IPAC/spherex-archive-documentation
-
+  license:
+    id: BSD-3-Clause
+    url: https://github.com/Caltech-IPAC/spherex-archive-documentation/blob/main/LICENSE
   toc:
     - file: documentation/index.md
     - title: SPHEREx Data Access
