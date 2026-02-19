@@ -22,14 +22,8 @@ SPHEREx data products are laid out in directories that can be navigated with sta
 This is convenient for users to get a quick sense of the types of data products that are available, to quickly download some examples by clicking through the directory tree, and to script bulk downloads using `wget` or `curl`.
 
 The root of the SPHEREx QR2 on-premises data directories is: [https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2](https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2).
-For QR1, replace '/qr2' with '/qr'.
 All of the data products are also available on the cloud via AWS.
 Please see our [instructions for accessing on-cloud SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/#spherex).
-
-:::{note}
-QR1 is superseded by QR2.
-The QR1 files will be available through January 2026 for reference.
-:::
 
 The public data products are organized into subdirectories based on the following organizational scheme:
 
@@ -43,7 +37,7 @@ The public data products are organized into subdirectories based on the followin
 * **Nonlinearity Parameters:** `nonlinear_pars/base-[Processing Date]/[Detector]/`
 * **Read Noise Parameters:** `readnoise_pars/base-[Processing Date]/[Detector]/`
 * **Solid Angle Pixel Map:** `solid_angle_pixel_map/cal-sapm-v[Version]-[Processing Date]/[Detector]/`
-* **Spectral WCS:** `spectral_wcs/cal-wcs-v[Version]-[Processing Date]/[Detector]/` (QR2) or `spectral_wcs/base-[Processing Date]/[Detector]/` (QR1)
+* **Spectral WCS:** `spectral_wcs/cal-wcs-v[Version]-[Processing Date]/[Detector]/`
 
 The content of each subdirectory and the filename formats are described in greater detail in the {ref}`Data Products <data-products>` section of this user guide and in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 
