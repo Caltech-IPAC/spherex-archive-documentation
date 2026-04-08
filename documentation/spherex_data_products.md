@@ -112,6 +112,7 @@ The basic steps are described below, and a [Python notebook tutorial](https://ca
 
 The PSF HDU has a header containing the keywords `XCTR_*`, `YCTR_*`, `XWID_*`, and `YWID_*`, where * goes from [1 to 121].
 To determine if a pixel in the original Spectral Image falls within a PSF zone, simply find the closest `XCTR_*` and `YCTR_*` to determine the cube plane that contains the corresponding PSF for this zone.
+Note that the zone pixel center coordinates are 0-based, while their _names_ in the header (for example `XCTR_*`) are 1-based.
 
 ## Calibration Product: Absolute Gain Matrix
 
