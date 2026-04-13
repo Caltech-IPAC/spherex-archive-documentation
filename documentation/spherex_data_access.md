@@ -76,7 +76,11 @@ There are three SPHEREx-related SIA2 collections:
 You can use `wget` or `curl` to submit SIA2 queries from the command line.
 For example:
 
-* `wget -O example1.html "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr2&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
+`wget -O spherex-example1.html "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr2&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
+
+or:
+
+`curl -o spherex-example2.html "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr2&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
 
 See the section on Python packages to learn how to use Python wrappers around IRSA’s SIA2 service.
 
