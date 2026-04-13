@@ -47,9 +47,12 @@ The content of each subdirectory and the filename formats are described in great
 
 IRSA provides API access to SPHEREx Spectral Image Multi-Extension FITS files (MEFs) and associated calibration files through [version 2 of the VO Simple Image Access (SIA2) protocol](https://ivoa.net/documents/SIA/20151223/).
 SIA2 allows users to query for a list of images that satisfy constraints based on position(s) on the sky, band, time, ID, and instrument.
-The list returned by the service includes a data access URL for each image.
+
+The table returned by the SIA2 service includes an `access_url` column containing a data access URL for each image.
 These can be used to retrieve the on-prem-hosted images using `wget` or `curl`.
-The returned list also returns cloud access information.
+The returned table also includes a `cloud_access` column containing cloud-hosted data access information.
+The Python tutorial notebooks [IRSA Cloud Access Introduction](https://caltech-ipac.github.io/irsa-tutorials/cloud-access-intro) and [SPHEREx Source Discovery Tool](https://caltech-ipac.github.io/irsa-tutorials/spherex-source-discovery-tool-demo/) include examples that show how to use the `cloud_access` information.
+
 A brief summary of SIA2 for accessing SPHEREx data for IRSA is given below.
 Additional [documentation on IRSA’s SIA2 service](https://irsa.ipac.caltech.edu/ibe/sia.html) can be found on the IRSA website.
 
