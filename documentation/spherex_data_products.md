@@ -58,6 +58,10 @@ HDU 4: ZODI
 HDU 5: PSF
  : 121 Point-spread functions (PSFs); each PSF is represented as a 101 x 101 image and all 121 are assembled together into a cube.
 
+   :::{warning}
+   SPHEREx Quick Release data products released before March 31, 2026 contained [an error in the header description of the PSF](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/psfhdrerr.html).
+   :::
+
 HDU 6: WCS-WAVE
  : Spectral World Coordinate System (WCS) FITS-compliant lookup table that maps spectral image pixel coordinates to central wavelengths and bandwidths.
    The lookup table consists of 1 row with 3 columns (X, Y, VALUES).

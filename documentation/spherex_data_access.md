@@ -47,9 +47,12 @@ The content of each subdirectory and the filename formats are described in great
 
 IRSA provides API access to SPHEREx Spectral Image Multi-Extension FITS files (MEFs) and associated calibration files through [version 2 of the VO Simple Image Access (SIA2) protocol](https://ivoa.net/documents/SIA/20151223/).
 SIA2 allows users to query for a list of images that satisfy constraints based on position(s) on the sky, band, time, ID, and instrument.
-The list returned by the service includes a data access URL for each image.
+
+The table returned by the SIA2 service includes an `access_url` column containing a data access URL for each image.
 These can be used to retrieve the on-prem-hosted images using `wget` or `curl`.
-The returned list also returns cloud access information.
+The returned table also includes a `cloud_access` column containing cloud-hosted data access information.
+The Python tutorial notebooks [IRSA Cloud Access Introduction](https://caltech-ipac.github.io/irsa-tutorials/cloud-access-intro) and [SPHEREx Source Discovery Tool](https://caltech-ipac.github.io/irsa-tutorials/spherex-source-discovery-tool-demo/) include examples that show how to use the `cloud_access` information.
+
 A brief summary of SIA2 for accessing SPHEREx data for IRSA is given below.
 Additional [documentation on IRSA’s SIA2 service](https://irsa.ipac.caltech.edu/ibe/sia.html) can be found on the IRSA website.
 
@@ -76,9 +79,13 @@ There are three SPHEREx-related SIA2 collections:
 You can use `wget` or `curl` to submit SIA2 queries from the command line.
 For example:
 
-* `wget -O example1.html "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr2&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
+`wget -O spherex-example1.html "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr2&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
 
-See the section on Python packages to learn how to use Python wrappers around IRSA’s SIA2 service.
+or:
+
+`curl -o spherex-example2.html "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr2&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
+
+See the section on {ref}`Python packages <access-python-packages>` to learn how to use Python wrappers around IRSA’s SIA2 service.
 
 (access-spectral-image-cutouts)=
 ### Cutouts of SPHEREx Spectral Image MEFs
@@ -95,6 +102,7 @@ This cutout service is also invoked by the SPHEREx Data Collection Explorer Spec
 This cutout service can also be invoked via Python, as illustrated in the Python Tutorial notebook titled [Download a collection of SPHEREx Spectral Image cutouts as a multi-extension FITS file](https://caltech-ipac.github.io/irsa-tutorials/spherex-cutouts/).
 Information on how to work with the PSF extension in these cutouts is documented in the {ref}`products-spectral-image-cutouts` of this User Guide and demonstrated in the Python Tutorial notebook titled [Understanding and Extracting the PSF Extension in a SPHEREx Cutout](https://caltech-ipac.github.io/irsa-tutorials/spherex-psf/).
 
+(access-python-packages)=
 ## Python packages: PyVO & Astroquery
 
 If you would like to take advantage of IRSA’s SIA2 service for querying SPHEREx images, but prefer to use Python rather than the command line, you may be interested in using one of two Python libraries:
