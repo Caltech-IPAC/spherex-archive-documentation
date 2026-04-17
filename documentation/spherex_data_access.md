@@ -85,7 +85,7 @@ or:
 
 `curl -o spherex-example2.html "https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_qr2&POS=circle+127.69444+-39.17760+0.01&RESPONSEFORMAT=HTML"`
 
-See the section on {ref}|`Python packages <access-python-packages>` to learn how to use Python wrappers around IRSA’s SIA2 service.
+See the section on {ref}`Python packages <access-python-packages>` to learn how to use Python wrappers around IRSA’s SIA2 service.
 
 (access-spectral-image-cutouts)=
 ### Cutouts of SPHEREx Spectral Image MEFs
