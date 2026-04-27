@@ -1,2 +1,3 @@
-# MyST build outputs
+# MyST build outputs and other build/test aritfacts
 _build
+.tox
