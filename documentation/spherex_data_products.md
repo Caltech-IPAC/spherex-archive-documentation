@@ -2,11 +2,12 @@
 # SPHEREx Data Products
 
 IRSA began releasing SPHEREx Spectral Image data on a weekly basis in July 2025 (Quick Release 1; QR1).
-In October 2025, IRSA began distributing SPHEREx Spectral Image data processed with substantially improved calibrations.
-This new processing, referred to as QR2, supersedes QR1 and includes reprocessed versions of all Spectral Image data acquired since the start of the mission.
-Future quick releases will also use the QR2 pipeline.
+In October 2025, IRSA began distributing SPHEREx Spectral Image data processed with substantially improved calibrations (Quick Release 2; QR2), with reprocessed versions of all QR1 images provided.
+QR1 was formally retired in February 2026 and is no longer available from IRSA.
+In April 2026, the QR2 headers were updated to correct PSF extension header errors.
+In September 2026, IRSA began releasing Quick Release 3 (QR3) data.
 
-A detailed description of SPHEREx quick release data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+A detailed description of SPHEREx data releases and the data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 Here we provide a concise summary of the science, calibration, and additional data products available at IRSA.
 This summary includes filenaming conventions, for which we adopt the following definitions:
 
