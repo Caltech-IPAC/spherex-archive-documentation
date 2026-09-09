@@ -8,7 +8,7 @@ These layers include:
 * **Browsable Directories:** SPHEREx on-premises data products are laid out in directories that can be navigated with standard web browsers.
   These data products are mirrored on AWS.
 * **Application Program Interfaces:** IRSA provides program-friendly Application Program Interfaces (APIs) to access SPHEREx Spectral Image data.
-  The on-prem and cloud-hosted Quick Release 2 Spectral Images that have been released thus far are accessible via the [Simple Image Access V2 protocol](https://ivoa.net/documents/SIA/20151223/) defined by the International Virtual Observatory Alliance ([IVOA](https://ivoa.net)).
+  The on-prem and cloud-hosted QR3 and QR2 Spectral Images that have been released thus far are accessible via the [Simple Image Access V2 protocol](https://ivoa.net/documents/SIA/20151223/) defined by the International Virtual Observatory Alliance ([IVOA](https://ivoa.net)).
   Cutouts of the Spectral Image data held on-prem are available via IRSA's Cutout Service.
 * **Python Packages:** SPHEREx data at IRSA are accessible via the Python packages [pyvo](https://pyvo.readthedocs.io/en/latest/) and [astroquery](https://astroquery.readthedocs.io/en/latest/ipac/irsa/irsa.html).
 * **SPHEREx Data Explorer:** IRSA provides a web-based Graphical User Interface (GUI) that makes it easy to search for, visualize, and download SPHEREx data.
@@ -16,16 +16,18 @@ These layers include:
 
 Each of these data access layers is described in greater detail in the subsections below.
 
+(browsable-directories)=
 ## Browsable Directories
 
 SPHEREx data products are laid out in directories that can be navigated with standard web browsers.
 This is convenient for users to get a quick sense of the types of data products that are available, to quickly download some examples by clicking through the directory tree, and to script bulk downloads using `wget` or `curl`.
 
-The root of the SPHEREx QR2 on-premises data directories is: [https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2](https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2).
+The root of the SPHEREx on-premises data directories is: [https://irsa.ipac.caltech.edu/ibe/data/spherex/](https://irsa.ipac.caltech.edu/ibe/data/spherex/).
 All of the data products are also available on the cloud via AWS.
 Please see our [instructions for accessing on-cloud SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/#spherex).
 
-The public data products are organized into subdirectories based on the following organizational scheme:
+There is one subdirectory per data release: `qr3` and `qr2`.
+Under each, the public data products are organized into subdirectories based on the following organizational scheme:
 
 * **Absolute Gain Matrix:** `abs_gain_matrix/cal-agm-v[Version]-[Processing Date]/[Detector]/`
 * **Exposure-Averaged Point Spread Functions (PSFs):** `average_psf/cal-psf-v[Version]-[Processing Date]/[Detector]/`
@@ -45,8 +47,13 @@ The content of each subdirectory and the filename formats are described in great
 
 ### IVOA Simple Image Access V2 Protocol
 
-IRSA provides API access to SPHEREx Spectral Image Multi-Extension FITS files (MEFs) and associated calibration files through [version 2 of the VO Simple Image Access (SIA2) protocol](https://ivoa.net/documents/SIA/20151223/).
+IRSA provides API access to SPHEREx Spectral Image Multi-Extension FITS files (MEFs) through [version 2 of the VO Simple Image Access (SIA2) protocol](https://ivoa.net/documents/SIA/20151223/).
 SIA2 allows users to query for a list of images that satisfy constraints based on position(s) on the sky, band, time, ID, and instrument.
+
+:::{note}
+Calibration files are not available via SIA2.
+They can be retrieved from the [](#browsable-directories) described above.
+:::
 
 The table returned by the SIA2 service includes an `access_url` column containing a data access URL for each image.
 These can be used to retrieve the on-prem-hosted images using `wget` or `curl`.
@@ -67,14 +74,17 @@ IRSA's generic SIA2 endpoint is:
 `https://irsa.ipac.caltech.edu/SIA?`
 
 Users must add a `COLLECTION` parameter to this endpoint to specify which dataset to search.
-There are three SPHEREx-related SIA2 collections:
+There are four SPHEREx-related SIA2 collections:
+
+* SPHEREx QR3 Spectral Image MEFs that are part of the SPHEREx **Wide Survey** can be accessed with: `COLLECTION=spherex_qr3`.
+  Use this collection if you are interested in more uniform coverage across the entire sky and want to ignore the additional coverage in the deep fields.
+
+* SPHEREx QR3 Spectral Image MEFs that are part of the SPHEREx **Deep Survey** can be accessed with: `COLLECTION=spherex_qr3_deep`.
 
 * SPHEREx QR2 Spectral Image MEFs that are part of the SPHEREx **Wide Survey** can be accessed with: `COLLECTION=spherex_qr2`.
   Use this collection if you are interested in more uniform coverage across the entire sky and want to ignore the additional coverage in the deep fields.
 
 * SPHEREx QR2 Spectral Image MEFs that are part of the SPHEREx **Deep Survey** can be accessed with: `COLLECTION=spherex_qr2_deep`.
-
-* SPHEREx QR2 **Calibration files** can be accessed with: `COLLECTION=spherex_qr2_cal`.
 
 You can use `wget` or `curl` to submit SIA2 queries from the command line.
 For example:
