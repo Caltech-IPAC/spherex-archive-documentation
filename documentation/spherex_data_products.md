@@ -2,11 +2,12 @@
 # SPHEREx Data Products
 
 IRSA began releasing SPHEREx Spectral Image data on a weekly basis in July 2025 (Quick Release 1; QR1).
-In October 2025, IRSA began distributing SPHEREx Spectral Image data processed with substantially improved calibrations.
-This new processing, referred to as QR2, supersedes QR1 and includes reprocessed versions of all Spectral Image data acquired since the start of the mission.
-Future quick releases will also use the QR2 pipeline.
+In October 2025, IRSA began distributing SPHEREx Spectral Image data processed with substantially improved calibrations (Quick Release 2; QR2), with reprocessed versions of all QR1 images provided.
+QR1 was formally retired in February 2026 and is no longer available from IRSA.
+In April 2026, the QR2 headers were updated to correct PSF extension header errors.
+In September 2026, IRSA began releasing Quick Release 3 (QR3) data.
 
-A detailed description of SPHEREx quick release data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+A detailed description of SPHEREx data releases and the data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 Here we provide a concise summary of the science, calibration, and additional data products available at IRSA.
 This summary includes filenaming conventions, for which we adopt the following definitions:
 
@@ -19,6 +20,7 @@ This summary includes filenaming conventions, for which we adopt the following d
 - `Detector` is an integer from 1 through 6.
 - `Version` is the version of this file, e.g. 'l2' for "level 2" data products.
 - `Processing Date` includes the year and the number of days into the year, e.g. `2025-164`.
+- `Crosstalk Type` is an integer from 1 through 3 indicating vertically displaced ghosts, horizontally displaced ghosts, and streak-like artifacts respectively.
 
 ## Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
 
@@ -140,9 +142,40 @@ The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector)
 
 - `abs_gain_matrix_D1_spx_cal-agm-v4-2025-161.fits`
 
+(epsf)=
+## Calibration Product: Effective Point Spread Functions (ePSFs)
+
+The Effective Point Spread Functions (ePSFs; QR3 only) are ~8 MB FITS binary tables, one per detector, each with one row per detector zone.
+Detectors 1, 2, 4, 5, and 6 are divided into regular spatial grids of 21 × 21 zones.
+Detector 3 is divided into 11 × 41 zones with finer sampling along the dispersion direction to better capture small variations.
+Each ePSF is a two-dimensional array of size 33 × 33 pixels.
+The ePSFs are oversampled by factor of five relative to the native detector pixels.
+
+The tutorial [Understanding and Extracting the ePSF Extension in a SPHEREx Cutout](https://caltech-ipac.github.io/irsa-tutorials/spherex-psf/) demonstrates how to work with the ePSF.
+
+:::{tip} ePSF supersedes PSF
+The ePSFs provide better modeling than the PSFs provided with QR2 (see below).
+The effective PSFs of the images themselves remain unchanged.
+Therefore, it is recommended to use the ePSFs for all images, including QR2 images.
+The tutorial linked above demonstrates.
+:::
+
+*Filename Format:*
+
+- `epsf_D[Detector]_spx_cal-epsf-v[Version]-[Processing Date].fits`
+
+*Example:*
+
+- `epsf_D5_spx_cal-epsf-v1-2026-191.fits`
+
 ## Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
 
-The Exposure-Averaged Point Spread Functions (PSFs) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121.
+:::{important} ePSF supersedes PSF
+The [ePSFs](#epsf) (above) provide better modeling than the PSFs described here, and are recommended for use in all cases.
+The following information is left for completeness, since the PSFs are still present in the QR2 release.
+:::
+
+The Exposure-Averaged Point Spread Functions (PSFs; QR2 only) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121.
 Each of the 121 layers represents a "super-resolution" PSF estimate in a different region (defined by an 11x11 grid) of the detector.
 Each PSF is a two-dimensional array with size of 101 × 101 pixels.
 The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent as one spectral image pixel (0.615 arcsec).
@@ -194,6 +227,86 @@ The Electronic Gain Factor product is a single YAML file that includes the prove
 
 - `gain_factors_spx_base-2025-158.yaml`
 
+## Additional Product: Spectral WCS
+
+The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector).
+Each file has 3 extensions: CWAVE, CBAND, and WCS-WAVE.
+For science analysis, use the values in the CWAVE and CBAND layers, not the WCS-WAVE which is intended for visualization.
+
+CWAVE is an image with dimensions 2,040 x 2,040.
+It contains the central wavelength in microns for each pixel.
+
+CBAND is an image with dimensions 2,040 x 2,040.
+It contains the bandwidth in microns for each pixel.
+
+WCS-WAVE is a table with 3 columns (X, Y, VALUES) and 1 row.
+This is equivalent to the WCS-WAVE extension in the Spectral Image MEF file described above.
+
+*Filename Format:*
+
+- `spectral_wcs_D[Detector]_spx_cal-wcs-v[Version]-[Processing Date].fits`
+
+*Example:*
+
+- `spectral_wcs_D1_spx_cal-wcs-v4-2025-254.fits`
+
+## Additional Product: Spectral Channels
+
+The Spectral Channels product is an image with dimensions 2,040 x 2,040 pixels.
+Each array element corresponds to one detector pixel, and the value identifies the spectral channel index within the detector.
+Each pixel value identifies the spectral channel (0-18) assigned to that detector pixel, used to build image mosaics; this geometric definition is not the same as the pixel's calibrated wavelength.
+The file also includes a table of the median band center, band center range, and median resolving power for each channel.
+
+*Filename Format:*
+
+- `spectral_channels_spx_cal-sch-v[Version]-[Processing Date].fits`
+
+*Example:*
+
+- `spectral_channels_spx_cal-sch-v2-2026-229.fits`
+
+## Additional Product: Auroral Line Template
+
+The Auroral Line Template (QR3 only) is an image with dimensions 2,040 x 2,040 pixels.
+It includes atmospheric emission lines generated by excited atoms and molecules (primarily nitrogen) in the upper atmosphere.
+It was generated for band 1 only.
+
+*Filename Format:*
+
+- `aurora_template_D[Detector]_spx_base-[Processing Date].fits`
+
+*Example:*
+
+- `aurora_template_D1_spx_base-2026-191.fits`
+
+## Additional Product: He Emission Template
+
+The He Emission Template (QR3 only) is an image with dimensions 2,040 x 2,040 pixels.
+It includes atmospheric He emission.
+It was generated for bands 1 and 2 only.
+
+*Filename Format:*
+
+- `he_template_D[Detector]_spx_base-[Processing Date].fits`
+
+*Example:*
+
+- `he_template_D2_spx_base-2026-191.fits`
+
+## Additional Product: Shuttle Glow Template
+
+The Shuttle Glow Template (QR3 only) is an image with dimensions 2,040 x 2,040 pixels.
+It includes emission produced when spacecraft in Low Earth orbit interact with the atmosphere.
+It was generated for band 5 only.
+
+*Filename Format:*
+
+- `shuttle_glow_template_D[Detector]_spx_base-[Processing Date].fits`
+
+*Example:*
+
+- `shuttle_glow_template_D5_spx_base-2026-191.fits`
+
 ## Additional Product: Nonfunctional Pixels
 
 The Nonfunctional Pixel products are ~32 MB FITS image files (one per detector) with dimensions 2,040 x 2,040.
@@ -201,11 +314,13 @@ Pixel values are 1 for pixels known to be permanently non-functioning and 0 othe
 
 *Filename Format:*
 
-- `nonfunc_D[Detector]_spx_base-[Processing Date].fits`
+- Q3: `nonfunc_v[Version]_D[Detector]_spx_base-[Processing Date].fits`
+- Q2: `nonfunc_D[Detector]_spx_base-[Processing Date].fits`
 
-*Example:*
+*Examples:*
 
-- `nonfunc_D1_spx_base-2025-158.fits`
+- Q3: `nonfunc_v2_D1_spx_base-2026-191.fits`
+- Q2: `nonfunc_D1_spx_base-2025-158.fits`
 
 ## Additional Product: Nonlinearity Parameters
 
@@ -249,25 +364,39 @@ Pixel values measure the solid angle in units of squared arcsec.
 - `solid_angle_pixel_map_D4_spx_cal-sapm-v2-2025-164.fits`
 
 (data-products-spectral-wcs)=
-## Additional Product: Spectral WCS
+## Additional Product: Crosstalk Parameters
 
-The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector).
-Each file has 3 extensions: CWAVE, CBAND, and WCS-WAVE.
-For science analysis, use the values in the CWAVE and CBAND layers, not the WCS-WAVE which is intended for visualization.
-
-CWAVE is an image with dimensions 2,040 x 2,040.
-It contains the central wavelength in microns for each pixel.
-
-CBAND is an image with dimensions 2,040 x 2,040.
-It contains the bandwidth in microns for each pixel.
-
-WCS-WAVE is a table with 3 columns (X, Y, VALUES) and 1 row.
-This is equivalent to the WCS-WAVE extension in the Spectral Image MEF file described above.
+The Crosstalk Parameters products are ECSV (Enhanced Character Separated Value; QR3 only) files containing masking parameters.
 
 *Filename Format:*
 
-- `spectral_wcs_D[Detector]_spx_cal-wcs-v[Version]-[Processing Date].fits`
+- `xtalk_class[Crosstalk Type]_D[Detector]_spx_base-[Processing Date].ecsv`
 
 *Example:*
 
-- `spectral_wcs_D1_spx_cal-wcs-v4-2025-254.fits`
+- `xtalk_class1_D1_spx_base-2026-191.ecsv`
+
+## Additional Product: Zodi Scaling
+
+The Zodi Scaling products (QR3 only) are ECSV files, one per detector, containing the scaling factor used to adjust the Kelsall et al. (1998) zodiacal light model.
+
+*Filename Format:*
+
+- `zodi_scaling_v[Version]_D[Detector]_spx_cal-zodi-v[Version]-[Processing Date].ecsv`
+
+*Example:*
+
+- `zodi_scaling_v2_D2_spx_cal-zodi-v2-2026-254.ecsv`
+
+## Additional Product: Flux Corrections
+
+The Flux Corrections products (QR3 only) are FITS image files with dimensions 2,040 x 2,040 pixels.
+They contain per-pixel scaling factors that can be used to combine QR2 data (calibrated with the previous gain) with QR3 data (calibrated with the new gain).
+
+*Filename Format:*
+
+- `l3_flux_corrections_D[Detector]_spx_cal-flxc-v[Version]-[Processing Date].fits`
+
+*Example:*
+
+- `l3_flux_corrections_D6_spx_cal-flxc-v1-2026-191.fits`
