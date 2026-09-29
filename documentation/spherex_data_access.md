@@ -27,21 +27,29 @@ All of the data products are also available on the cloud via AWS.
 Please see our [instructions for accessing on-cloud SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/#spherex).
 
 There is one subdirectory per data release: `qr3` and `qr2`.
-Under each, the public data products are organized into subdirectories based on the following organizational scheme:
+Under each, the public data products are organized into subdirectories based on the organizational scheme listed below.
+The content of each subdirectory and the filename formats are described in greater detail in the [Data Products](#data-products) section of this user guide and in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 
 * **Absolute Gain Matrix:** `abs_gain_matrix/cal-agm-v[Version]-[Processing Date]/[Detector]/`
-* **Exposure-Averaged Point Spread Functions (PSFs):** `average_psf/cal-psf-v[Version]-[Processing Date]/[Detector]/`
+* **Auroral Line Template:** (QR3 only) `aurora_template/base-[Processing Date]/[Detector]/`
+* **Exposure-Averaged Point Spread Functions (PSFs):** (QR2 only) `average_psf/cal-psf-v[Version]-[Processing Date]/[Detector]/`
 * **Dark Current:** `dark/cal-drk-v[Version]-[Processing Date]/[Detector]/`
 * **Dichroic:** `dichroic/base-[Processing Date]/[Detector]/`
+* **Effective Point Spread Functions (ePSFs):** (QR3 only) `epsf/cal-epsf-v[Version]-[Processing Date]/[Detector]/`
 * **Electronic Gain Factors:** `gain_factors/base-[Processing Date]/`
+* **He Emission Template:** (QR3 only) `he_template/base-[Processing Date]/[Detector]/`
+* **Flux Corrections:** (QR3 only) `l3_flux_corrections/cal-flxc-v[Version]-[Processing Date]/[Detector]/`
 * **Spectral Image Multi-Extension FITS Files (MEFs):** `level2/[Planning Period]/l2b-v[Version]-[Processing Date]/[Detector]/`
-* **Nonfunctional Pixels:** `nonfunc/base-[Processing Date]/[Detector]/`
+* **Nonfunctional Pixels:** `nonfunc_v2/base-[Processing Date]/[Detector]/` (QR3) or `nonfunc/base-[Processing Date]/[Detector]/` (QR2)
 * **Nonlinearity Parameters:** `nonlinear_pars/base-[Processing Date]/[Detector]/`
 * **Read Noise Parameters:** `readnoise_pars/base-[Processing Date]/[Detector]/`
+* **Shuttle Glow Template:** (QR3 only) `shuttle_glow_template/base-[Processing Date]/[Detector]/`
+* **Simple Imaging Polynomials (SIP):** `sip/cal-sip-v[Version]-[Processing Date]/[Detector]/`
 * **Solid Angle Pixel Map:** `solid_angle_pixel_map/cal-sapm-v[Version]-[Processing Date]/[Detector]/`
+* **Spectral Channels:** `spectral_channels/cal-sch-v[Version]-[Processing Date]/`
 * **Spectral WCS:** `spectral_wcs/cal-wcs-v[Version]-[Processing Date]/[Detector]/`
-
-The content of each subdirectory and the filename formats are described in greater detail in the {ref}`Data Products <data-products>` section of this user guide and in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+* **Crosstalk Parameters:**: (QR3 only) `xtalk_class[Crosstalk Type]/base-[Processing Date]/[Detector]/`
+* **Zodi Scaling:** (QR3 only) `zodi_scaling_v[Version]/cal-zodi-v[Version]-[Processing Date]/[Detector]/`
 
 ## Application Program Interfaces (APIs)
 

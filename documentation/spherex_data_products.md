@@ -9,7 +9,7 @@ In September 2026, IRSA began releasing Quick Release 3 (QR3) data.
 
 A detailed description of SPHEREx data releases and the data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 Here we provide a concise summary of the science, calibration, and additional data products available at IRSA.
-This summary includes filenaming conventions, for which we adopt the following definitions:
+This summary includes filenaming conventions (for directory naming conventions, see [](#browsable-directories)), for which we adopt the following definitions:
 
 - `Planning Period` designates the survey plan uploaded to the spacecraft, e.g. `2025W18_2B`.
   Each planning period covers approximately 3.5 days of operation.
@@ -264,6 +264,18 @@ The file also includes a table of the median band center, band center range, and
 *Example:*
 
 - `spectral_channels_spx_cal-sch-v2-2026-229.fits`
+
+## Additional Product: Simple Imaging Polynomials (SIP)
+
+The Simple Imaging Polynomials (SIP) products are delivered as one FITS image file per band with the SIP coefficients in the header.
+
+*Filename Format:*
+
+- `sip_D[Detector]_spx_cal-sip-v[Version]-[Processing Date].fits`
+
+*Example:*
+
+- `sip_D1_spx_cal-sip-v1-2026-191.fits`
 
 ## Additional Product: Auroral Line Template
 
