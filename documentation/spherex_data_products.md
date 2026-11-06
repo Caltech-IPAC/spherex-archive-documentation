@@ -1,15 +1,8 @@
 (data-products)=
 # SPHEREx Data Products
 
-IRSA began releasing SPHEREx Spectral Image data on a weekly basis in July 2025 (Quick Release 1; QR1).
-In October 2025, IRSA began distributing SPHEREx Spectral Image data processed with substantially improved calibrations (Quick Release 2; QR2), with reprocessed versions of all QR1 images provided.
-QR1 was formally retired in February 2026 and is no longer available from IRSA.
-In April 2026, the QR2 headers were updated to correct PSF extension header errors.
-In September 2026, IRSA began releasing Quick Release 3 (QR3) data.
-
-A detailed description of SPHEREx data releases and the data products available to the public is provided in the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
 Here we provide a concise summary of the science, calibration, and additional data products available at IRSA.
-This summary includes filenaming conventions (for directory naming conventions, see [](#browsable-directories)), for which we adopt the following definitions:
+This summary includes filename conventions (for directory naming conventions, see [](#browsable-directories)), for which we adopt the following definitions:
 
 - `Planning Period` designates the survey plan uploaded to the spacecraft, e.g. `2025W18_2B`.
   Each planning period covers approximately 3.5 days of operation.
@@ -18,13 +11,13 @@ This summary includes filenaming conventions (for directory naming conventions, 
   Each large slew has a maximum of 4 small slews, so the allowed small slew counter range is 1 to 4.
   Some large slews will have fewer than 4 small slews.
 - `Detector` is an integer from 1 through 6.
-- `Version` is the version of this file, e.g. 'l2' for "level 2" data products.
+- `Version` is the version of this file.
 - `Processing Date` includes the year and the number of days into the year, e.g. `2025-164`.
 - `Crosstalk Type` is an integer from 1 through 3 indicating vertically displaced ghosts, horizontally displaced ghosts, and streak-like artifacts respectively.
 
 ## Main Science Data Product: Spectral Image Multi-Extension FITS Files (MEF)
 
-The main Quick Release data product is the Level 2 Spectral Image MEF, as described in Section 2.1 of the [Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+The main data product of DR1 and the Quick Releases is the Level 2 Spectral Image MEF, as described in Section 2.2 of the [Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp.pdf).
 
 There are 6 Spectral MEFs (one for each detector) for each sky pointing.
 Because data quality assessments are evaluated per spectral image band, some observations will not include all 6 bands in the archive.
@@ -39,16 +32,16 @@ HDU 1: IMAGE
    Each FPA contains three 2K x 2K detector arrays placed behind a set of linear variable filters (LVFs), providing narrow-band response with a band center that varies along one axis of the array.
    SPHEREx obtains spectra through multiple exposures, placing a given source at multiple positions in the field of view, where it is measured at multiple wavelengths by repointing the spacecraft.
 
-   * Band 1: λ= 0.75 - 1.09 µm; R=39
-   * Band 2: λ= 1.10 - 1.62 µm; R=41
-   * Band 3: λ= 1.63 - 2.41 µm; R=41
-   * Band 4: λ= 2.42 - 3.82 µm; R=35
-   * Band 5: λ= 3.83 - 4.41 µm; R=112
-   * Band 6: λ= 4.42 - 5.00 µm; R=128
+   - Band 1: λ= 0.75 - 1.09 µm; R=39
+   - Band 2: λ= 1.10 - 1.62 µm; R=41
+   - Band 3: λ= 1.63 - 2.41 µm; R=41
+   - Band 4: λ= 2.42 - 3.82 µm; R=35
+   - Band 5: λ= 3.83 - 4.41 µm; R=112
+   - Band 6: λ= 4.42 - 5.00 µm; R=128
 
 HDU 2: FLAGS
  : Bitmap of per-pixel status and processing flags, stored as a 2040 x 2040 image.
-   The definition of the flags are provided in Table 10 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+   The flag definitions are provided in Table 16 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp.pdf).
 
 HDU 3: VARIANCE
  : Variance of calibrated surface brightness flux in units of (MJy/sr)^2, stored as a 2,040 x 2,040 image.
@@ -57,8 +50,10 @@ HDU 4: ZODI
  : Modeled zodiacal light background flux in units of MJy/sr, stored as a 2040 x 2040 image.
    This has not been subtracted from the IMAGE extension.
 
-HDU 5: PSF
- : 121 Point-spread functions (PSFs); each PSF is represented as a 101 x 101 image and all 121 are assembled together into a cube.
+HDU 5: EPSF (DR1 and QR3) or PSF (QR2)
+ : DR1 and QR3: Effective point-spread functions ([ePSFs](#epsf)), one per detector zone, on a grid of 21 x 21 zones for detectors 1, 2, 4, 5, and 6 and 11 x 41 zones for detector 3.
+
+   QR2: 121 point-spread functions ([PSFs](#psf)); each PSF is represented as a 101 x 101 image and all 121 are assembled together into a cube.
 
    :::{warning}
    SPHEREx Quick Release data products released before March 31, 2026 contained [an error in the header description of the PSF](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/psfhdrerr.html).
@@ -73,9 +68,9 @@ HDU 6: WCS-WAVE
    VALUES is an array of two-element arrays: at each (X, Y) control point, the two-element array contains the central wavelength and the corresponding bandwidth.
 
    :::{note}
-   Adopted to support the unique nature of the SPHEREx LVF filters, this rarely-used part of the FITS standard has yet to be implemented by all readers.
+   Adopted to support the unique nature of the SPHEREx LVF filters, this rarely used part of the FITS standard has yet to be implemented by all readers.
 
-   If your FITS client software doesn't automatically recognize this WCS-WAVE, you can manually determine the central wavelength or bandwidth at an arbitrary pixel location by identifying the four nearest control points and applying bilinear interpolation.
+   If your FITS client software doesn't automatically recognize this WCS-WAVE extension, you can manually determine the central wavelength or bandwidth at an arbitrary pixel location by identifying the four nearest control points and applying bilinear interpolation.
    This method yields values accurate to within approximately 1 nm.
    The information in the WCS-WAVE extension of the Spectral Image MEF is also provided in a stand-alone data product described below in [](#data-products-spectral-wcs).
    The fidelity of the WCS-WAVE lookup table is intended for visualization purposes.
@@ -84,7 +79,7 @@ HDU 6: WCS-WAVE
 
 *Filename Format:*
 
-- `level2_[Observation ID]D[Detector]_spx_l2b_v[Version]_[Processing Date].fits`
+- `level2_[Observation ID]D[Detector]_spx_l2b-v[Version]-[Processing Date].fits`
 
 *Example:*
 
@@ -96,8 +91,8 @@ HDU 6: WCS-WAVE
 IRSA's Cutout Service provides spatial subsets of the SPHEREx Spectral Image MEFs.
 Information on how to use the Cutout Service is provided in the {ref}`access-spectral-image-cutouts` section of this User Guide.
 The cutout MEFs returned from this service contain the same HDUs as the original Spectral Images (IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE).
-However, the IMAGE, FLAGS, VARIANCE, AND ZODI HDUs have been modified to include only those pixels within the specified cutout size.
-The WCS-WAVE HDU has also modified to provide the correct mapping between the pixels in the cutout to wavelength.
+However, the IMAGE, FLAGS, VARIANCE, and ZODI HDUs have been modified to include only those pixels within the specified cutout size.
+The WCS-WAVE HDU has also been modified to provide the correct mapping between the pixels in the cutout to wavelength.
 The PSF HDU from the original spectral image is included unmodified in the cutout MEF.
 
 The spatially-varying PSF is represented as an image cube with 121 planes (an 11×11 grid of detector regions).
@@ -110,7 +105,7 @@ SPHEREx FITS header keywords follow the FITS 1-based pixel convention (first pix
 This affects two places in the steps below: the `+1` in step 2 bridges these conventions when using `CRPIX1A`/`CRPIX2A`, and in step 3 the PSF cube must be indexed as `i − 1` even though the header keyword suffix `i` runs from 1 to 121.
 ```
 
-1. Determine the 0-based pixel coordinates of the position of interest in the cutout IMAGE HDU .
+1. Determine the 0-based pixel coordinates of the position of interest in the cutout IMAGE HDU.
    Astropy's `world_to_pixel()` function returns 0-based coordinates directly and is a natural choice for this.
 
 2. Convert to 0-based pixel coordinates in the original Spectral Image using the `CRPIX1A` and `CRPIX2A` header keywords:
@@ -125,10 +120,59 @@ This affects two places in the steps below: the `+1` in step 2 bridges these con
 
 3. Identify the PSF cube plane by comparing (`xpix_orig`, `ypix_orig`) against the zone centers in the PSF HDU header.
 
-The PSF HDU header contains keywords `XCTR_i` and `YCTR_i` for `i` = 1 to 121.
-The values of `XCTR_i` and `YCTR_i` are 0-based pixel coordinates in the original Spectral Image, so they can be compared directly to `xpix_orig` and `ypix_orig`.
-Find the index `i` whose center is closest to your position (functionality for this is provided in the tutorial linked above).
-The corresponding PSF is in cube plane `i − 1` (the keyword index `i` is 1-based, but the cube array is 0-indexed).
+   The PSF HDU header contains keywords `XCTR_i` and `YCTR_i` for `i` = 1 to 121.
+   The values of `XCTR_i` and `YCTR_i` are 0-based pixel coordinates in the original Spectral Image, so they can be compared directly to `xpix_orig` and `ypix_orig`.
+   Find the index `i` whose center is closest to your position (functionality for this is provided in the tutorial linked above).
+   The corresponding PSF is in cube plane `i − 1` (the keyword index `i` is 1-based, but the cube array is 0-indexed).
+
+(products-all-sky-cube)=
+## Science Data Product: All-Sky Cube (DR1 Only)
+
+The SPHEREx All-Sky Cube is a set of spectral data cubes covering the whole sky, built from the DR1 Spectral Images.
+It is described in Section 2.5 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp.pdf).
+Key points:
+
+- The sky is divided into 12,288 tiles (HEALPix order 5, NESTED numbering) of about 1.8° x 1.8°.
+  Each tile is a FITS cube of 512 x 512 pixels (12.9 arcsec per pixel) in 102 spectral channels (channels 1 to 17 of each of the 6 detectors).
+- Unlike the Spectral Images, the cube has the zodiacal light (ZODI layer) subtracted.
+- The cube is also provided as a HiPS tree of PNG images (one frame per spectral channel) for visualization only.
+
+Known issues (see Section 2.5.2 of the Explanatory Supplement for details):
+
+- Channels 51 and 52, adjacent to the dichroic beam splitter, contain no data.
+  They are included to keep the channel spacing and numbering correct, and are listed in the `BLANKCH` header keyword.
+- Atmospheric emission lines, most strongly the helium line at 1.083 µm in band 1, create stripes in the cube.
+  Extended sources with strong emission lines or absorption bands can also create stripes.
+- The HiPS PNG images have a much lower dynamic range than the FITS cubes, with a fixed display stretch of 0 to 40 MJy/sr.
+  Use the FITS cubes, not the HiPS images, for science analysis.
+
+In addition, be aware that the tiles are in the HEALPix (HPX) projection, which many FITS viewers don't display properly, so objects can appear distorted.
+
+Each FITS cube is a multi-extension FITS file with 5 extensions:
+
+IMAGE
+ : Surface brightness in units of MJy/sr, stored as a 512 x 512 x 102 cube.
+
+NHITS
+ : Number of input image pixels that contributed to each cube pixel, stored as a 512 x 512 x 102 cube.
+
+FLAGS
+ : Bitmap of per-pixel status and processing flags propagated from the input pixels, stored as a 512 x 512 x 102 cube.
+   Input pixels with certain flags were excluded from the cube; see Section 2.5 of the Explanatory Supplement for the list.
+
+SPECTRAL_CHANNELS
+ : Table of the central and edge wavelengths of each of the 102 spectral channels.
+
+WCS-WAVE
+ : Spectral WCS lookup table, as in the Spectral Image MEF.
+
+*Filename Format:*
+
+- `Npix[HEALPix Pixel Index]_cube.fits`
+
+*Example:*
+
+- `Npix4659_cube.fits`
 
 ## Calibration Product: Absolute Gain Matrix
 
@@ -145,11 +189,11 @@ The Absolute Gain Matrix products are ~16 MB FITS image files (one per detector)
 (epsf)=
 ## Calibration Product: Effective Point Spread Functions (ePSFs)
 
-The Effective Point Spread Functions (ePSFs; QR3 only) are ~8 MB FITS binary tables, one per detector, each with one row per detector zone.
+The Effective Point Spread Functions (ePSFs; DR1 and QR3 only) are ~8 MB FITS binary tables, one per detector, each with one row per detector zone.
 Detectors 1, 2, 4, 5, and 6 are divided into regular spatial grids of 21 × 21 zones.
 Detector 3 is divided into 11 × 41 zones with finer sampling along the dispersion direction to better capture small variations.
 Each ePSF is a two-dimensional array of size 33 × 33 pixels.
-The ePSFs are oversampled by factor of five relative to the native detector pixels.
+The ePSFs are oversampled by a factor of five relative to the native detector pixels.
 
 The tutorial [Understanding and Extracting the ePSF Extension in a SPHEREx Cutout](https://caltech-ipac.github.io/irsa-tutorials/spherex-psf/) demonstrates how to work with the ePSF.
 
@@ -157,7 +201,7 @@ The tutorial [Understanding and Extracting the ePSF Extension in a SPHEREx Cutou
 The ePSFs provide better modeling than the PSFs provided with QR2 (see below).
 The effective PSFs of the images themselves remain unchanged.
 Therefore, it is recommended to use the ePSFs for all images, including QR2 images.
-The tutorial linked above demonstrates.
+The tutorial linked above demonstrates how.
 :::
 
 *Filename Format:*
@@ -168,6 +212,7 @@ The tutorial linked above demonstrates.
 
 - `epsf_D5_spx_cal-epsf-v1-2026-191.fits`
 
+(psf)=
 ## Calibration Product: Exposure-Averaged Point Spread Functions (PSFs)
 
 :::{important} ePSF supersedes PSF
@@ -177,8 +222,8 @@ The following information is left for completeness, since the PSFs are still pre
 
 The Exposure-Averaged Point Spread Functions (PSFs; QR2 only) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121.
 Each of the 121 layers represents a "super-resolution" PSF estimate in a different region (defined by an 11x11 grid) of the detector.
-Each PSF is a two-dimensional array with size of 101 × 101 pixels.
-The PSFs are oversampled such that 10 PSF pixels cover the same spatial extent as one spectral image pixel (0.615 arcsec).
+Each PSF is a two-dimensional array with a size of 101 × 101 pixels.
+The PSFs are oversampled such that 10 PSF pixels (0.615 arcsec each) cover the same spatial extent as one spectral image pixel (6.15 arcsec).
 
 *Filename Format:*
 
@@ -203,7 +248,7 @@ The Dark Current products are ~16 MB FITS image files (one per detector) with di
 ## Calibration Product: Dichroic
 
 The Dichroic products are ~16 MB FITS image files with dimensions 2,040 x 2,040.
-The pixel value is 0 for pixels that are unaffected by flux attenuation due to the dicroic filter and 1 for impacted pixels.
+The pixel value is 0 for pixels that are unaffected by flux attenuation due to the dichroic filter and 1 for impacted pixels.
 A pixel is considered impacted if the flux attenuation is 50% or higher.
 Note that only bands 3 and 4 have any non-zero values.
 
@@ -227,11 +272,12 @@ The Electronic Gain Factor product is a single YAML file that includes the prove
 
 - `gain_factors_spx_base-2025-158.yaml`
 
+(data-products-spectral-wcs)=
 ## Additional Product: Spectral WCS
 
 The Spectral WCS products are ~32 MB multi-extension FITS files (one per detector).
 Each file has 3 extensions: CWAVE, CBAND, and WCS-WAVE.
-For science analysis, use the values in the CWAVE and CBAND layers, not the WCS-WAVE which is intended for visualization.
+For science analysis, use the values in the CWAVE and CBAND layers, not the WCS-WAVE extension, which is intended for visualization.
 
 CWAVE is an image with dimensions 2,040 x 2,040.
 It contains the central wavelength in microns for each pixel.
@@ -253,8 +299,8 @@ This is equivalent to the WCS-WAVE extension in the Spectral Image MEF file desc
 ## Additional Product: Spectral Channels
 
 The Spectral Channels product is an image with dimensions 2,040 x 2,040 pixels.
-Each array element corresponds to one detector pixel, and the value identifies the spectral channel index within the detector.
-Each pixel value identifies the spectral channel (0-18) assigned to that detector pixel, used to build image mosaics; this geometric definition is not the same as the pixel's calibrated wavelength.
+Each pixel value is the index (0-18) of the spectral channel assigned to that detector pixel, used to build image mosaics.
+This geometric definition is not the same as the pixel's calibrated wavelength.
 The file also includes a table of the median band center, band center range, and median resolving power for each channel.
 
 *Filename Format:*
@@ -279,7 +325,7 @@ The Simple Imaging Polynomials (SIP) products are delivered as one FITS image fi
 
 ## Additional Product: Auroral Line Template
 
-The Auroral Line Template (QR3 only) is an image with dimensions 2,040 x 2,040 pixels.
+The Auroral Line Template (DR1 and QR3 only) is an image with dimensions 2,040 x 2,040 pixels.
 It includes atmospheric emission lines generated by excited atoms and molecules (primarily nitrogen) in the upper atmosphere.
 It was generated for band 1 only.
 
@@ -293,7 +339,7 @@ It was generated for band 1 only.
 
 ## Additional Product: He Emission Template
 
-The He Emission Template (QR3 only) is an image with dimensions 2,040 x 2,040 pixels.
+The He Emission Template (DR1 and QR3 only) is an image with dimensions 2,040 x 2,040 pixels.
 It includes atmospheric He emission.
 It was generated for bands 1 and 2 only.
 
@@ -307,7 +353,7 @@ It was generated for bands 1 and 2 only.
 
 ## Additional Product: Shuttle Glow Template
 
-The Shuttle Glow Template (QR3 only) is an image with dimensions 2,040 x 2,040 pixels.
+The Shuttle Glow Template (DR1 and QR3 only) is an image with dimensions 2,040 x 2,040 pixels.
 It includes emission produced when spacecraft in Low Earth orbit interact with the atmosphere.
 It was generated for band 5 only.
 
@@ -326,19 +372,19 @@ Pixel values are 1 for pixels known to be permanently non-functioning and 0 othe
 
 *Filename Format:*
 
-- Q3: `nonfunc_v[Version]_D[Detector]_spx_base-[Processing Date].fits`
-- Q2: `nonfunc_D[Detector]_spx_base-[Processing Date].fits`
+- DR1 and QR3: `nonfunc_v[Version]_D[Detector]_spx_base-[Processing Date].fits`
+- QR2: `nonfunc_D[Detector]_spx_base-[Processing Date].fits`
 
 *Examples:*
 
-- Q3: `nonfunc_v2_D1_spx_base-2026-191.fits`
-- Q2: `nonfunc_D1_spx_base-2025-158.fits`
+- DR1 and QR3: `nonfunc_v2_D1_spx_base-2026-191.fits`
+- QR2: `nonfunc_D1_spx_base-2025-158.fits`
 
 ## Additional Product: Nonlinearity Parameters
 
 The Nonlinearity Parameter products are ~79 MB multi-extension FITS files (one per detector).
 Each file contains 5 extensions (Q_nl, b1, b2, b3, Qmax), each of which is an image with dimensions 2,040 x 2,040.
-These extensions are described in Section 3.2.1 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf).
+These extensions are described in Section 3.2.2 of the [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp.pdf).
 
 *Filename Format:*
 
@@ -375,10 +421,9 @@ Pixel values measure the solid angle in units of squared arcsec.
 
 - `solid_angle_pixel_map_D4_spx_cal-sapm-v2-2025-164.fits`
 
-(data-products-spectral-wcs)=
 ## Additional Product: Crosstalk Parameters
 
-The Crosstalk Parameters products are ECSV (Enhanced Character Separated Value; QR3 only) files containing masking parameters.
+The Crosstalk Parameters products (DR1 and QR3 only) are ECSV (Enhanced Character Separated Value) files containing masking parameters.
 
 *Filename Format:*
 
@@ -390,7 +435,7 @@ The Crosstalk Parameters products are ECSV (Enhanced Character Separated Value; 
 
 ## Additional Product: Zodi Scaling
 
-The Zodi Scaling products (QR3 only) are ECSV files, one per detector, containing the scaling factor used to adjust the Kelsall et al. (1998) zodiacal light model.
+The Zodi Scaling products (DR1 and QR3 only) are ECSV files, one per detector, containing the scaling factor used to adjust the Kelsall et al. (1998) zodiacal light model.
 
 *Filename Format:*
 
@@ -402,7 +447,7 @@ The Zodi Scaling products (QR3 only) are ECSV files, one per detector, containin
 
 ## Additional Product: Flux Corrections
 
-The Flux Corrections products (QR3 only) are FITS image files with dimensions 2,040 x 2,040 pixels.
+The Flux Corrections products (DR1 and QR3 only) are FITS image files with dimensions 2,040 x 2,040 pixels.
 They contain per-pixel scaling factors that can be used to combine QR2 data (calibrated with the previous gain) with QR3 data (calibrated with the new gain).
 
 *Filename Format:*
