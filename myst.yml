@@ -3,7 +3,7 @@ version: 1
 project:
   title: SPHEREx Archive at IRSA
   subject: SPHEREx Archive at IRSA
-  date: 2026-09-28
+  date: 2026-11-12
   # description:
   # keywords: []
   authors: [Caltech/IPAC-IRSA]
@@ -13,9 +13,11 @@ project:
     url: https://github.com/Caltech-IPAC/spherex-archive-documentation/blob/main/LICENSE
   toc:
     - file: documentation/index.md
-    - title: Data Products
+    - title: SPHEREx Data Releases
+      file: documentation/spherex_data_releases.md
+    - title: SPHEREx Data Products
       file: documentation/spherex_data_products.md
-    - title: Data Access
+    - title: SPHEREx Data Access
       file: documentation/spherex_data_access.md
 
 site:

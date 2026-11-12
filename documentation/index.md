@@ -9,13 +9,13 @@ This User Guide will evolve as the SPHEREx project delivers new data products an
 ## SPHEREx Overview
 
 SPHEREx is a NASA Astrophysics Medium Explorer mission that launched in March 2025.
-During its planned two-year mission, SPHEREx will obtain 0.75-5 micron spectroscopy over the entire sky, with deeper data in the SPHEREx Deep Fields.
-IRSA began releasing SPHEREx Spectral Image data on a weekly basis in July 2025.
+During its nominal 25-month science mission, SPHEREx will obtain 0.75-5 micron spectroscopy over the entire sky, with deeper data in the SPHEREx Deep Fields.
+IRSA began [releasing](#data-releases) SPHEREx Spectral Image data on a weekly basis in July 2025.
 SPHEREx data will be used to:
 
-* **constrain the physics of inflation** by measuring its imprints on the three-dimensional large-scale distribution of matter,
-* **trace the history of galactic light production** through a deep multi-band measurement of large-scale clustering,
-* **investigate the abundance and composition of water and biogenic ices** in the early phases of star and planetary disk formation.
+- **constrain the physics of inflation** by measuring its imprints on the three-dimensional large-scale distribution of matter,
+- **trace the history of galactic light production** through a deep multi-band measurement of large-scale clustering,
+- **investigate the abundance and composition of water and biogenic ices** in the early phases of star and planetary disk formation.
 
 The community will also mine SPHEREx data and combine it with synergistic data sets to address a variety of additional topics in astrophysics.
 
@@ -23,8 +23,6 @@ More information is available in the "Mission Overview" section of the SPHEREx E
 
 ## Additional Resources
 
-[SPHEREx archive at IRSA](https://irsa.ipac.caltech.edu/Missions/spherex.html)
-
-[SPHEREx project website](https://spherex.caltech.edu/)
-
-[SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp_QR.pdf)
+- [SPHEREx archive at IRSA](https://irsa.ipac.caltech.edu/Missions/spherex.html)
+- [SPHEREx project website](https://spherex.caltech.edu/)
+- [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp.pdf)
