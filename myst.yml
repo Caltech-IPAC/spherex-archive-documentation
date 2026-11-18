@@ -1,9 +1,9 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
 project:
-  title: SPHEREx Archive at IRSA
-  subject: SPHEREx Archive at IRSA
-  date: 2026-11-12
+  title: SPHEREx Archive User Guide
+  subject: SPHEREx Archive at IRSA User Guide
+  date: 2026-11-18
   # description:
   # keywords: []
   authors: [Caltech/IPAC-IRSA]
@@ -13,12 +13,10 @@ project:
     url: https://github.com/Caltech-IPAC/spherex-archive-documentation/blob/main/LICENSE
   toc:
     - file: documentation/index.md
-    - title: SPHEREx Data Releases
-      file: documentation/spherex_data_releases.md
-    - title: SPHEREx Data Products
-      file: documentation/spherex_data_products.md
-    - title: SPHEREx Data Access
-      file: documentation/spherex_data_access.md
+    - file: documentation/spherex_data_releases.md
+    - file: documentation/spherex_data_products.md
+    - file: documentation/spherex_data_access.md
+    - file: documentation/additional_resources.md
 
 site:
   template: book-theme

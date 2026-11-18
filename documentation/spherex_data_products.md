@@ -143,46 +143,13 @@ HDU 5: WCS-WAVE
 
 IRSA's Cutout Service provides spatial subsets of the SPHEREx Spectral Image MEFs.
 Information on how to use the Cutout Service is provided in the {ref}`access-spectral-image-cutouts` section of this User Guide.
-The cutout MEFs returned from this service contain the same HDUs as the original Spectral Images (IMAGE, FLAGS, VARIANCE, ZODI, EPSF or PSF, WCS-WAVE).
+The cutout MEFs returned from this service contain the same HDUs as the original Spectral Images (IMAGE, FLAGS, VARIANCE, ZODI, EPSF, WCS-WAVE).
 However, the IMAGE, FLAGS, VARIANCE, and ZODI HDUs have been modified to include only those pixels within the specified cutout size.
 The WCS-WAVE HDU is also modified to provide the correct mapping between the pixels in the cutout and wavelength.
-The EPSF (DR1 and QR3) or PSF (QR2 and QR1) extension from the original Spectral Image is included unmodified in the cutout MEF.
 
-For DR1 and QR3 cutouts, the EPSF extension contains spatially varying effective point spread functions.
-See the [Python notebook tutorial](https://caltech-ipac.github.io/irsa-tutorials/spherex-psf/) for instructions on selecting the appropriate ePSF.
-
-The following instructions apply to QR1 and QR2 cutouts that users may have previously downloaded.
-These releases are no longer available through the Cutout Service.
-
-The spatially-varying PSF is represented as an image cube with 121 planes (an 11×11 grid of detector regions).
-Each plane is a 101x101 pixel image representing a PSF for a different region of the detector.
-Users interested in performing photometry on a cutout will need to select the correct PSF plane for their desired position in the cutout.
-The basic steps are described below, and a [Python notebook tutorial](https://caltech-ipac.github.io/irsa-tutorials/spherex-psf/) is provided to help users get started with a simple implementation.
-
-```{note}
-SPHEREx FITS header keywords follow the FITS 1-based pixel convention (first pixel = 1), while Python tools such as Astropy return 0-based pixel coordinates (first pixel = 0).
-This affects two places in the steps below: the `+1` in step 2 bridges these conventions when using `CRPIX1A`/`CRPIX2A`, and in step 3 the PSF cube must be indexed as `i − 1` even though the header keyword suffix `i` runs from 1 to 121.
-```
-
-1. Determine the 0-based pixel coordinates of the position of interest in the cutout IMAGE HDU.
-   Astropy's `world_to_pixel()` function returns 0-based coordinates directly and is a natural choice for this.
-
-2. Convert to 0-based pixel coordinates in the original Spectral Image using the `CRPIX1A` and `CRPIX2A` header keywords:
-
-   ```
-   xpix_orig = 1 + xpix_cutout - CRPIX1A
-   ypix_orig = 1 + ypix_cutout - CRPIX2A
-   ```
-
-   `CRPIX1A` and `CRPIX2A` are FITS keywords stored in 1-based convention.
-   The `+1` converts `xpix_cutout` from 0-based to 1-based before subtracting, so that `xpix_orig` comes out 0-based, which is then consistent with the PSF zone coordinates in step 3.
-
-3. Identify the PSF cube plane by comparing (`xpix_orig`, `ypix_orig`) against the zone centers in the PSF HDU header.
-
-   The PSF HDU header contains keywords `XCTR_i` and `YCTR_i` for `i` = 1 to 121.
-   The values of `XCTR_i` and `YCTR_i` are 0-based pixel coordinates in the original Spectral Image, so they can be compared directly to `xpix_orig` and `ypix_orig`.
-   Find the index `i` whose center is closest to your position (functionality for this is provided in the tutorial linked above).
-   The corresponding PSF is in cube plane `i − 1` (the keyword index `i` is 1-based, but the cube array is 0-indexed).
+The `EPSF` extension from the original Spectral Image is included unmodified in the cutout MEF and contains spatially varying effective point spread functions.
+For QR1 or QR2 cutouts downloaded previously, obtain the ePSFs separately.
+See the Python notebook tutorial [SPHEREx PSF Models](https://caltech-ipac.github.io/irsa-tutorials/spherex-psf/) for instructions for all data releases.
 
 ## Calibration Data Products
 
@@ -229,7 +196,8 @@ The tutorial linked above demonstrates how.
 
 :::{important} ePSF supersedes PSF
 The [ePSFs](#epsf) (above) provide better modeling than the PSFs described here, and are recommended for use in all cases.
-The following information is retained for users working with previously-downloaded QR1 or QR2 data.
+Users who have previously-downloaded QR1 or QR2 data are encouraged to use the tutorial linked above to obtain and apply the ePSFs.
+The following information is retained for users who still choose to work with the PSFs.
 :::
 
 The Exposure-Averaged Point Spread Functions (PSFs; QR2 and QR1 only) are ~6 MB FITS cubes (one for each detector) with dimensions 101 × 101 × 121.
@@ -244,6 +212,34 @@ The PSFs are oversampled such that 10 PSF pixels (0.615 arcsec each) cover the s
 *Example:*
 
 - `average_psf_D1_spx_cal-psf-v4-2025-161.fits`
+
+Users interested in performing photometry on previously downloaded QR1 or QR2 data will need to select the correct PSF plane for their desired position.
+The basic steps are described below to help users get started with a simple implementation.
+
+```{note}
+SPHEREx FITS header keywords follow the FITS 1-based pixel convention (first pixel = 1), while Python tools such as Astropy return 0-based pixel coordinates (first pixel = 0).
+This affects two places in the steps below: the `+1` in step 2 bridges these conventions when using `CRPIX1A`/`CRPIX2A`, and in step 3 the PSF cube must be indexed as `i − 1` even though the header keyword suffix `i` runs from 1 to 121.
+```
+
+1. Determine the 0-based pixel coordinates of the position of interest in the cutout IMAGE HDU.
+   Astropy's `world_to_pixel()` function returns 0-based coordinates directly and is a natural choice for this.
+
+2. Convert to 0-based pixel coordinates in the original Spectral Image using the `CRPIX1A` and `CRPIX2A` header keywords:
+
+   ```
+   xpix_orig = 1 + xpix_cutout - CRPIX1A
+   ypix_orig = 1 + ypix_cutout - CRPIX2A
+   ```
+
+   `CRPIX1A` and `CRPIX2A` are FITS keywords stored in 1-based convention.
+   The `+1` converts `xpix_cutout` from 0-based to 1-based before subtracting, so that `xpix_orig` comes out 0-based, which is then consistent with the PSF zone coordinates in step 3.
+
+3. Identify the PSF cube plane by comparing (`xpix_orig`, `ypix_orig`) against the zone centers in the PSF HDU header.
+
+   The PSF HDU header contains keywords `XCTR_i` and `YCTR_i` for `i` = 1 to 121.
+   The values of `XCTR_i` and `YCTR_i` are 0-based pixel coordinates in the original Spectral Image, so they can be compared directly to `xpix_orig` and `ypix_orig`.
+   Find the index `i` whose center is closest to your position.
+   The corresponding PSF is in cube plane `i − 1` (the keyword index `i` is 1-based, but the cube array is 0-indexed).
 
 ### Dark Current
 

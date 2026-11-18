@@ -3,18 +3,19 @@
 
 IRSA serves SPHEREx data from two locations: (1) on-premises at IPAC; and (2) on the cloud via Amazon Web Services (AWS).
 IRSA provides layered access to these data to support a variety of use cases and users.
-These layers include:
+The available access methods are summarized in [](#table-data-access-overview) and described in the following sections.
 
-- **Browsable Directories:** SPHEREx on-premises data products are laid out in directories that can be navigated with standard web browsers.
-  These data products are mirrored on AWS.
-- **Application Program Interfaces:** IRSA provides program-friendly Application Program Interfaces (APIs) to access SPHEREx Spectral Image and All-Sky Cube data.
-  The on-premises and cloud-hosted DR1 and QR3 Spectral Images and DR1 All-Sky Cube FITS files are accessible via the [Simple Image Access V2 protocol](https://ivoa.net/documents/SIA/20151223/) defined by the International Virtual Observatory Alliance ([IVOA](https://ivoa.net)).
-  Cutouts of the Spectral Image data held on-premises are available via IRSA's Cutout Service.
-- **Python Packages:** SPHEREx data at IRSA are accessible via the Python packages [pyvo](https://pyvo.readthedocs.io/en/latest/) and [astroquery](https://astroquery.readthedocs.io/en/latest/ipac/irsa/irsa.html).
-- **SPHEREx Data Explorer:** IRSA provides a web-based Graphical User Interface (GUI) that makes it easy to search for, visualize, and download SPHEREx data.
-  This tool provides access to the on-premises copy of the data.
+:::{table} Data access overview
+:label: table-data-access-overview
 
-Each of these data access layers is described in greater detail in the subsections below.
+| Access Method | Description |
+| --- | --- |
+| [Browsable Directories](#browsable-directories) | Browse directory structures and access individual files |
+| [Application Programming Interfaces (APIs)](#apis) | Access Spectral Images, All-Sky Cubes, and cutouts programmatically |
+| [Python Packages](#access-python-packages) | Search for, retrieve, and analyze SPHEREx data using Python |
+| [SPHEREx Data Explorer](#spherex-data-explorer) | Interactively search and visualize the data |
+| [Fornax](#fornax) | Analyze SPHEREx data on the cloud without downloading large datasets |
+:::
 
 (browsable-directories)=
 ## Browsable Directories
@@ -25,6 +26,7 @@ This is convenient for users to get a quick sense of the types of data products 
 The root of the SPHEREx on-premises data directories is: [https://irsa.ipac.caltech.edu/ibe/data/spherex/](https://irsa.ipac.caltech.edu/ibe/data/spherex/).
 All of the data products are also available on the cloud via AWS.
 Please see our [instructions for accessing on-cloud SPHEREx data](https://irsa.ipac.caltech.edu/cloud_access/#spherex).
+For large-scale analysis, we recommend using [Fornax](#fornax) to work with the data on the cloud rather than downloading it.
 
 There is one subdirectory per data release: `dr1`, `qr3`, and `qr2`.
 QR2 data remain available for direct download through February 2027 but are no longer searchable.
@@ -54,9 +56,9 @@ The content of each subdirectory and the filename formats are described in great
 - **Zodi Scaling:** (DR1 and QR3 only) `zodi_scaling_v[Version]/cal-zodi-v[Version]-[Processing Date]/[Detector]/`
 
 (apis)=
-## Application Program Interfaces (APIs)
+## Application Programming Interfaces (APIs)
 
-### IVOA Simple Image Access V2 Protocol
+### IVOA Simple Image Access V2 Protocol (SIA2)
 
 IRSA provides API access to SPHEREx Spectral Image Multi-Extension FITS files (MEFs) and All-Sky Cube FITS files through [version 2 of the VO Simple Image Access (SIA2) protocol](https://ivoa.net/documents/SIA/20151223/).
 SIA2 allows users to query for a list of images that satisfy constraints based on position(s) on the sky, band, time, ID, and instrument.
@@ -64,6 +66,7 @@ SIA2 allows users to query for a list of images that satisfy constraints based o
 :::{note}
 Calibration files are not available via SIA2.
 They can be retrieved from the [](#browsable-directories) described above.
+DR1 calibration files can also be found with a TAP query of the `spherex_dr1_cal` collection.
 :::
 
 The table returned by the SIA2 service includes an `access_url` column containing a data access URL for each image.
@@ -156,6 +159,21 @@ Due to the nature of the ingestion process, new SPHEREx data will first be avail
 Availability via SIA2 will lag on the order of a day.
 :::
 
-## SPHEREx Data Explorer Web Application
+(spherex-data-explorer)=
+## SPHEREx Data Explorer
 
 Users who prefer an interactive graphical user interface (GUI) for specifying search constraints, submitting queries, and visualizing the results should consider the [SPHEREx Data Explorer](https://irsa.ipac.caltech.edu/applications/spherex), which includes its own context-sensitive help.
+
+(fornax)=
+## Fornax
+
+[Fornax](https://docs.fornax.sciencecloud.nasa.gov/quick-start/) is a NASA cloud-based science platform that enables astronomers to analyze large datasets without downloading them to their local computers.
+
+Fornax provides Jupyter notebooks and scalable computing resources for working with SPHEREx data alongside data from other astronomical archives.
+Users can:
+
+- Explore and analyze SPHEREx Spectral Images and All-Sky Cubes using Python.
+- Combine SPHEREx data with observations from other missions and surveys.
+- Develop and share reproducible analysis workflows in Jupyter notebooks.
+
+See the [Fornax Quick Start Guide](https://docs.fornax.sciencecloud.nasa.gov/quick-start/) to get started.
