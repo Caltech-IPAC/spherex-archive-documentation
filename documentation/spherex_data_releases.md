@@ -7,7 +7,7 @@ This page describes the SPHEREx Data Releases (DR) and Quick Releases (QR) avail
 ## SPHEREx Data Release 1 (DR1)
 
 DR1 contains all Survey 1 and Survey 2 data, reprocessed with the same improved pipeline and calibrations as QR3.
-It also includes a new product, the All-Sky Cube, which is a set of spectral data cubes covering the whole sky, built from the DR1 Spectral Images.
+It also includes a new product, the All-Sky Cube, which is a set of spectral data cubes covering the whole sky in the 102 nominal SPHEREx spectral bands, built from the DR1 Spectral Images.
 IRSA released DR1 in November 2026.
 
 (qr3)=
@@ -15,6 +15,7 @@ IRSA released DR1 in November 2026.
 
 QR3 contains Survey 3 and Survey 4 data.
 IRSA began releasing QR3 data on a weekly basis in September 2026.
+QR3 data incorporate improved PSF and other calibrations for more reliable photometry.
 QR3 versions of the data observed from May 16, 2026 to July 19, 2026 are released together with DR1.
 
 (qr2)=
@@ -26,6 +27,7 @@ On March 31, 2026, the QR2 headers were updated to correct PSF extension header 
 
 ```{tip} DR1 + QR3 supersede QR2
 Together, DR1 and QR3 supersede QR2.
+The DR1 and QR3 Spectral Images together form a uniformly processed set.
 Use DR1 and QR3 for new work.
 QR2 data are no longer searchable and remain available for direct download through February 2027 (see [](#browsable-directories)).
 Because the calibrations changed, use caution when combining QR2 data with DR1 or QR3 data.

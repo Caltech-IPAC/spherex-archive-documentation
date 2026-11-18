@@ -18,11 +18,3 @@ SPHEREx data will be used to:
 - **investigate the abundance and composition of water and biogenic ices** in the early phases of star and planetary disk formation.
 
 The community will also mine SPHEREx data and combine it with synergistic data sets to address a variety of additional topics in astrophysics.
-
-More information is available in the "Mission Overview" section of the SPHEREx Explanatory Supplement.
-
-## Additional Resources
-
-- [SPHEREx archive at IRSA](https://irsa.ipac.caltech.edu/Missions/spherex.html)
-- [SPHEREx project website](https://spherex.caltech.edu/)
-- [SPHEREx Explanatory Supplement](https://irsa.ipac.caltech.edu/data/SPHEREx/docs/SPHEREx_Expsupp.pdf)
